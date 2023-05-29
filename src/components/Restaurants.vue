@@ -1,13 +1,20 @@
 <template>
-  <div>
-    <p v-for="restaurant in restaurants" :key="restaurant.id">{{ restaurant.name }}</p>
+  <div class="d-flex gap-4">
+
+    <!-- CICLARE CATEGORIE PER FARE BOTTONI RICERCA FILTRO -->
+
+    <RestaurantsCard v-for="restaurant in restaurants" :key="restaurant.id" :restaurant="restaurant" />
   </div>
 </template>
 
 <script>
 import axios from 'axios'
+import RestaurantsCard from './RestaurantsCard.vue'
 
   export default {
+    components:{
+      RestaurantsCard,
+    },
     data(){
       return {
         restaurants: []
@@ -27,7 +34,7 @@ import axios from 'axios'
       }
     },
     mounted(){
-      this.fetchRestaurants()
+      this.fetchRestaurants(1)
     },
   }
 </script>

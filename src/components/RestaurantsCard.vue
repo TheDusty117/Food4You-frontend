@@ -1,48 +1,30 @@
 <template>
-    <div class="post-card">
-      <router-link :to="{ name: 'restaurants.show', params: { slug: restaurants.slug } }">
-        <h3>{{ restaurants.name }}</h3>
-        <p>{{ restaurant.category ? restaurant.category.name : '-' }}</p>
-        <ul class="tag-list" v-if="restaurant.category && restaurant.category.length > 0">
-          <li class="tag" v-for="category in restaurant.category" :key="category.id">{{ category.name }}</li>
-        </ul>
-      </router-link>
+    <div class="container card restaurant-card">
+      <h3>{{ restaurant.name }}</h3>
+      <p>{{ restaurant.address }}</p>
+      <!-- se piu' di 0 categorie, allora stampa tot categorie in base alla lunghezza -->
+      <h4>Categoria</h4>
+      <ul v-if="restaurant.categories && restaurant.categories.length > 0">
+        <li v-for="cat in restaurant.categories" :key="cat.id" >{{ cat.name }}</li>
+      </ul>
+  
     </div>
   </template>
   
   <script>
-
     export default {
-      components: {
-        
-      },
-      props: {
-        restaurants: {
+      props:{
+        restaurant: {
           type: Object,
-          required: true
+          required: true,
         }
       },
-      mounted() {
-        // console.log(this.post.category)
+      mounted(){
+        console.log(this.restaurant.categories)
       },
     }
   </script>
   
-  <style scoped>
+  <style lang="scss" scoped>
   
-  .tag-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    align-items: center;
-    list-style: none;
-  }
-  
-  .tag {
-    padding: 0 1rem;
-    line-height: 24px;
-    font-size: 12px;
-    border-radius: 999px;
-    background: #a7a7a7;
-  }
   </style>
