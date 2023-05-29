@@ -1,5 +1,8 @@
 <template>
   <div class="d-flex gap-4">
+    
+    <!-- <div class="btn btn-primary" @click="fetchCategories()">categoria</div> -->
+
     <RestaurantCard v-for="restaurant in restaurants" :key="restaurant.id" :restaurant="restaurant" />
   </div>
 </template>
@@ -18,8 +21,16 @@ import RestaurantCard from './RestaurantCard.vue'
       }
     },
     methods: {
-      // fetchCategories(){
-      //   axios.get('http://127.0.0.1:8000/api/restaurants/categories')
+      // fetchCategories() {
+      //   axios.get('http://127.0.0.1:8000/api/restaurants')
+      //   .then(res=> {
+      //     console.log(res)
+      //     const { results } = res.data
+      //     this.categories = results.data
+      //   })
+      //   .catch(err=> {
+      //     console.log(err)
+      //   })
       // },
 
       fetchRestaurants() {
