@@ -19,7 +19,7 @@ import axios from 'axios'
         .then(res=> {
           console.log(res)
           const { results } = res.data
-          this.restaurants = results
+          this.restaurants = results.data
         })
         .catch(err=> {
           console.log(err)
