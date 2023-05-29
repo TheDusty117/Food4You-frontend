@@ -1,7 +1,7 @@
 <template>
   <div class="d-flex gap-4">
     
-    <!-- <div class="btn btn-primary" @click="fetchCategories()">categoria</div> -->
+    <!-- CICLARE CATEGORIE PER FARE BOTTONI RICERCA FILTRO -->
 
     <RestaurantCard v-for="restaurant in restaurants" :key="restaurant.id" :restaurant="restaurant" />
   </div>
