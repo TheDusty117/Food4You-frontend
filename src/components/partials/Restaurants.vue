@@ -1,19 +1,27 @@
 <template>
-  <div>
-    <p v-for="restaurant in restaurants" :key="restaurant.id">{{ restaurant.name }}</p>
+  <div class="d-flex gap-4">
+    <RestaurantCard v-for="restaurant in restaurants" :key="restaurant.id" :restaurant="restaurant" />
   </div>
 </template>
 
 <script>
 import axios from 'axios'
+import RestaurantCard from './RestaurantCard.vue'
 
   export default {
+    components:{
+      RestaurantCard,
+    },
     data(){
       return {
         restaurants: []
       }
     },
     methods: {
+      // fetchCategories(){
+      //   axios.get('http://127.0.0.1:8000/api/restaurants/categories')
+      // },
+
       fetchRestaurants() {
         axios.get('http://127.0.0.1:8000/api/restaurants')
         .then(res=> {
@@ -27,7 +35,7 @@ import axios from 'axios'
       }
     },
     mounted(){
-      this.fetchRestaurants()
+      this.fetchRestaurants(1)
     },
   }
 </script>
