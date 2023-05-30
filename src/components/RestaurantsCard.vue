@@ -1,5 +1,5 @@
 <template>
-    <div class="container card restaurant-card">
+    <div class="">
       <h3>{{ restaurant.name }}</h3>
       <p>{{ restaurant.address }}</p>
       <!-- se piu' di 0 categorie, allora stampa tot categorie in base alla lunghezza -->
