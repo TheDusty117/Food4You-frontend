@@ -6,17 +6,18 @@
           <h1 class="text-3xl font-bold">
             {{ restaurant.name }}
           </h1>
-          ciao
+          
+          <h3>Tipologie</h3>
           <li v-for="category in restaurant.categories" :key="category.id" :category="category">
                 {{ category.name }}
           </li>
-          addio
-
-          arrivederci
+          
+          <h3>menù</h3>
+          
           <li v-for="food in restaurant.food" :key="food.id" :food="food">
-                {{ food.name }} eccomi
+                {{ food.name }} 
           </li> 
-          rieccoci
+          
           
          
 
