@@ -1,5 +1,5 @@
 <template>
-    <DefaultLayout>
+
       <div class="container">
         <h1>Ristoranti</h1>
       </div>
@@ -7,15 +7,16 @@
         <Restaurants />
       </div>
   
-    </DefaultLayout>
+
   </template>
   
   <script>
-
+  
   import Restaurants from '../components/Restaurants.vue';
     export default {
       components: {
         Restaurants,
+   
    
       }
       

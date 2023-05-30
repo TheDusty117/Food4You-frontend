@@ -7,7 +7,9 @@
       <ul v-if="restaurant.categories && restaurant.categories.length > 0">
         <li v-for="cat in restaurant.categories" :key="cat.id" >{{ cat.name }}</li>
       </ul>
-  
+      
+      <router-link :to="{ name: 'restaurants.show', params: { slug: restaurant.slug } }">Apri
+      </router-link>
     </div>
   </template>
   
@@ -20,7 +22,7 @@
         }
       },
       mounted(){
-        console.log(this.restaurant.categories)
+        console.log(this.restaurant.category)
       },
     }
   </script>
