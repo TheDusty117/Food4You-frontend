@@ -4,15 +4,25 @@
         <div class="container py-4">
   
           <h1 class="text-3xl font-bold">
-            {{ $route.params.slug }}
+            {{ restaurant.name }}
           </h1>
-          <h2>{{  $route.params.slug }}</h2>
-   
-        </div>
-  
-  
+          ciao
+          <li v-for="category in restaurant.categories" :key="category.id" :category="category">
+                {{ category.name }}
+          </li>
+          addio
 
-  
+          arrivederci
+          <li v-for="food in restaurant.food" :key="food.id" :food="food">
+                {{ food.name }} eccomi
+          </li> 
+          rieccoci
+          
+         
+
+          
+
+        </div>
       </template>
 
 
@@ -66,6 +76,10 @@ import RestaurantsCard from '../components/RestaurantsCard.vue';
     created() {
       this.fetchRestaurant(this.slug)
       
+      
+    },
+    mounted(){
+      console.log('mounted:')
     },
     beforeRouteUpdate(to,from) {
       // console.log('to route:',to)
