@@ -1,99 +1,127 @@
 <template>
+  <template v-if="loading === false">
+    <div class="container py-4">
+      <h1 class="text-3xl font-bold mb-4">{{ restaurant.name }}</h1>
 
-      <template v-if="loading === false">
-        <div class="container py-4">
-  
-          <h1 class="text-3xl font-bold">
-            {{ restaurant.name }}
-          </h1>
-          
-          <h3>Tipologie</h3>
-          <li v-for="category in restaurant.categories" :key="category.id" :category="category">
-                {{ category.name }}
-          </li>
-          
-          <h3>menù</h3>
-          
-          <li v-for="food in restaurant.food" :key="food.id" :food="food">
-                {{ food.name }} 
-          </li> 
-          
-          
-         
+      <h3 class="mb-2">Tipologie</h3>
+      <ul class="list-unstyled mb-4">
+        <li v-for="category in restaurant.categories" :key="category.id" class="mb-2">{{ category.name }}</li>
+      </ul>
 
-          
-
-        </div>
-      </template>
-
-
+      <h3 class="mb-2">Menù</h3>
+      <ul class="list-unstyled">
+        <li v-for="food in restaurant.food" :key="food.id" class="mb-2">
+          <div class="food-item">
+            <div class="food-item-info">
+              <h4 class="food-item-name">{{ food.name }}</h4>
+              <p class="food-item-price">Price: {{ food.price }}</p>
+            </div>
+            <p class="food-item-description">{{ food.description }}</p>
+          </div>
+        </li>
+      </ul>
+    </div>
   </template>
+</template>
 
 <script>
-
-import axios from 'axios'
+import axios from 'axios';
 import RestaurantsCard from '../components/RestaurantsCard.vue';
-    export default {
-        components: {
 
-      RestaurantsCard,
-    },
-    data() {
-      return {
-        restaurant: null,
-        loading: true
-      }
-    },
-    props: ['slug'],
-    methods: {
-      fetchRestaurant(slug) {
+export default {
+  components: {
+    RestaurantsCard,
+  },
+  data() {
+    return {
+      restaurant: null,
+      loading: true,
+    };
+  },
+  props: ['slug'],
+  methods: {
+    fetchRestaurant(slug) {
+      this.loading = true;
 
-        this.loading = true
+      axios
+        .get(`http://127.0.0.1:8000/api/restaurants/${this.slug}`)
+        .then((res) => {
+          const { success, restaurant } = res.data;
 
-        axios.get(`http://127.0.0.1:8000/api/restaurants/${ this.slug }`) //this.$route.params.slug
-        .then(res => {
-          const { success, restaurant } = res.data
-
-          if(success) {
-            this.restaurant = restaurant
+          if (success) {
+            this.restaurant = restaurant;
           } else {
-            // this.$router.push({ name: '404' })
-            this.$router.replace({ name: '404' })
+            this.$router.replace({ name: '404' });
           }
-
         })
-        .catch(err => {
-          // console.log(err)
-          this.$router.replace({ name: '404' })
+        .catch((err) => {
+          this.$router.replace({ name: '404' });
         })
         .finally(() => {
-          
-          this.loading = false
-
-        }) 
-      }
-
+          this.loading = false;
+        });
     },
-    created() {
-      this.fetchRestaurant(this.slug)
-      
-      
-    },
-    mounted(){
-      console.log('mounted:')
-    },
-    beforeRouteUpdate(to,from) {
-      // console.log('to route:',to)
-      // console.log('from route:',from)
-      const newSlug = to.params.slug
-      console.log(newSlug)
-      
-      this.fetchRestaurant(newSlug)
-
-    }
-    }
+  },
+  created() {
+    this.fetchRestaurant(this.slug);
+  },
+  beforeRouteUpdate(to, from) {
+    const newSlug = to.params.slug;
+    this.fetchRestaurant(newSlug);
+  },
+};
 </script>
 
 <style lang="scss" scoped>
+h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
 
+h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+h4 {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+p {
+  font-size: 1.1rem;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.food-item {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  padding: 1rem;
+  border-radius: 4px;
+  background-color: #f7f7f7;
+}
+
+.food-item-info {
+  flex: 1;
+  margin-right: 1rem;
+}
+
+.food-item-name {
+  color: #333;
+}
+
+.food-item-price {
+  color: #888;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.food-item-description {
+  color: #666;
+}
 </style>
