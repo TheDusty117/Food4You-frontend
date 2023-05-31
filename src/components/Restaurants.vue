@@ -3,9 +3,13 @@
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">Seleziona le categorie</h5>
-        <div class="form-check" v-for="category in categoriesArr" :key="category.id">
-          <input class="form-check-input" type="checkbox" @change="selectCategory(category)" :id="category.id">
-          <label class="form-check-label" :for="category.id">{{ category.name }}</label>
+        <div class="row">
+          <div class="col-4" v-for="category in categoriesArr" :key="category.id">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" @change="selectCategory(category)" :id="category.id">
+              <label class="form-check-label mb-2" :for="category.id">{{ category.name }}</label>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -17,6 +21,12 @@
     </div>
   </div>
 </template>
+
+
+
+
+
+
 
 <script>
 import axios from 'axios'
