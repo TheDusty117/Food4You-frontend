@@ -15,6 +15,10 @@
     </div>
 
     <div class="row mt-3">
+      <div>
+        <Cart/>
+      </div>
+
       <div class="col" v-for="restaurant in filteredRestaurants" :key="restaurant.id">
         <RestaurantsCard :restaurant="restaurant" />
       </div>
@@ -31,10 +35,12 @@
 <script>
 import axios from 'axios'
 import RestaurantsCard from './RestaurantsCard.vue'
+import Cart from './Cart.vue'
 
 export default {
   components: {
     RestaurantsCard,
+    Cart,
   },
   data() {
     return {
