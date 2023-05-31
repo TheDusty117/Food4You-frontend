@@ -1,19 +1,22 @@
 <template>
-  <div class="card">
-    <div class="card-body">
-      <h3 class="card-title">{{ restaurant.name }}</h3>
-      <p class="card-text">{{ restaurant.address }}</p>
+  <div class="card-deck">
+    <div class="card">
+      <div class="card-body">
+        <h3 class="card-title">{{ restaurant.name }}</h3>
+        <p class="card-text">{{ restaurant.address }}</p>
 
-      <h4 class="card-subtitle mb-3">Categoria</h4>
-      <ul v-if="restaurant.categories && restaurant.categories.length > 0" class="list-unstyled">
-        <li v-for="cat in restaurant.categories" :key="cat.id" class="mb-2">{{ cat.name }}</li>
-      </ul>
+        <h4 class="card-subtitle mb-3">Categoria</h4>
+        <ul v-if="restaurant.categories && restaurant.categories.length > 0" class="list-unstyled">
+          <li v-for="cat in restaurant.categories" :key="cat.id" class="mb-2">{{ cat.name }}</li>
+        </ul>
 
-      <router-link :to="{ name: 'restaurants.show', params: { slug: restaurant.slug } }"
-        class="btn btn-primary">Apri</router-link>
+        <router-link :to="{ name: 'restaurants.show', params: { slug: restaurant.slug } }"
+          class="btn btn-primary">Apri</router-link>
+      </div>
     </div>
   </div>
 </template>
+
   
 <script>
 export default {
