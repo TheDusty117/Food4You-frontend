@@ -6,6 +6,7 @@ import Login from './pages/Login.vue'
 import RestaurantsIndex from './pages/Restaurants.index.vue'
 import RestaurantsShow from './pages/Restaurants.show.vue'
 import NotFound from './pages/404.vue'
+import Cart from './pages/Cart.vue'
 
 const history = createWebHistory()
 console.log('history: ', history)
@@ -43,6 +44,11 @@ const router = createRouter({
 			path: '/404',
 			name: '404',
 			component: NotFound,
+		},
+		{
+			path: '/cart',
+			name: 'cart',
+			component: Cart,
 		},
 	],
 })

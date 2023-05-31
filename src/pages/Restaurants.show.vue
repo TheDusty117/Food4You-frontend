@@ -3,6 +3,7 @@
     <div class="container py-4">
       <h1 class="text-3xl font-bold mb-4">{{ restaurant.name }}</h1>
 
+      <button><router-link :to="{ name: 'cart' }">Cart</router-link></button>
       <h3 class="mb-2">Tipologie</h3>
       <ul class="list-unstyled mb-4">
         <li v-for="category in restaurant.categories" :key="category.id" class="mb-2">{{ category.name }}</li>
@@ -17,6 +18,9 @@
               <p class="food-item-price">Price: {{ food.price }}</p>
             </div>
             <p class="food-item-description">{{ food.description }}</p>
+            <button @click="AddFoodToCart(food)" class="btn btn-success">
+              ADD
+            </button>
           </div>
         </li>
       </ul>
@@ -27,15 +31,18 @@
 <script>
 import axios from 'axios';
 import RestaurantsCard from '../components/RestaurantsCard.vue';
+import store from '../store'
 
 export default {
   components: {
     RestaurantsCard,
+
   },
   data() {
     return {
       restaurant: null,
       loading: true,
+      store
     };
   },
   props: ['slug'],
@@ -61,9 +68,15 @@ export default {
           this.loading = false;
         });
     },
+    AddFoodToCart(food) {
+      // console.log(food)
+      this.store.Cart.push(food)
+      localStorage.setItem('foods', JSON.stringify(this.store.Cart))
+    }
   },
   created() {
     this.fetchRestaurant(this.slug);
+
   },
   beforeRouteUpdate(to, from) {
     const newSlug = to.params.slug;
