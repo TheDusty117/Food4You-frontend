@@ -1,9 +1,11 @@
 <template>
     <div class="container">
         <div class="grid">
-            <div v-for="(food, index) in getLocalFood" :key="index" class="card">
-                <div v-if="food">
 
+            
+            
+            <div  v-for="(food, index) in store.Cart" :key="index" class="card">
+                <div v-if="!food.removed">
                     <p>
                         {{ food.name }}
                     </p>
@@ -14,13 +16,13 @@
                     <button @click="RemoveFoodToCart(index, food)">
                         Delete food
 
-                    </button>
-                </div>
+                    </button> 
+                </div>                
             </div>
-            <button @click="removeAllFromCart(index, food)">
-                svuota cestino
 
-            </button>
+           
+
+
         </div>
     </div>
 </template>
@@ -37,6 +39,7 @@ export default {
     
     methods: {
         RemoveFoodToCart(index, food) {
+            //food.removed = true;
             // localStorage.clear()
             // console.log(food,'ho eliminato un cibo dal carrello', store.Cart)
             // localStorage.removeItem('foods')
@@ -57,6 +60,7 @@ export default {
             return JSON.parse(localStorage.getItem('foods'));
         },
         removeAllFromCart(){
+            food.removed = true;
             localStorage.removeItem('foods')
             return 
         }
