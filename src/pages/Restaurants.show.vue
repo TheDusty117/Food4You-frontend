@@ -4,12 +4,12 @@
     <div class="container py-4">
       <button><router-link :to="{ name: 'cart' }">Cart {{ this.store.Cart.length }}</router-link></button>
 
-      <div class="restaurant">
+      <div class="restaurant-card">
         <h1 class="text-3xl font-bold mb-4">{{ restaurant.name }}</h1>
         <h3 class="mb-2">Tipologie</h3>
-      <ul class="list-unstyled mb-4">
-        <li v-for="category in restaurant.categories" :key="category.id" class="mb-2">{{ category.name }}</li>
-      </ul>
+        <ul class="list-unstyled mb-4">
+          <li v-for="category in restaurant.categories" :key="category.id" class="mb-2">{{ category.name }}</li>
+        </ul>
       </div>
       
 
@@ -115,6 +115,14 @@ p {
 
 ul {
   list-style-type: none;
+}
+
+.restaurant-card{
+  margin: 1rem 0;
+  border: 1px solid #ddd;
+  padding: 1rem;
+  border-radius: 4px;
+  background-color: #f7f7f7;
 }
 
 .food-item {
