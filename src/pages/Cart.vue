@@ -5,19 +5,19 @@
             
             
             <div  v-for="(food, index) in store.Cart" :key="index" class="card">
-                <div v-if="!food.removed">
-                    <p>
-                        {{ food.name }}
-                    </p>
-                    <p>
-                        {{ food.price }}
+                
+                <p>
+                    {{ food.name }}
+                </p>
+                <p>
+                    {{ food.price }}
 
-                    </p>
-                    <button @click="RemoveFoodToCart(index, food)">
-                        Delete food
+                </p>
+                <button @click="RemoveFoodToCart(index, food)">
+                    Delete food
 
-                    </button> 
-                </div>                
+                </button> 
+                                
             </div>
 
            
@@ -39,7 +39,7 @@ export default {
     
     methods: {
         RemoveFoodToCart(index, food) {
-            //food.removed = true;
+            
             // localStorage.clear()
             // console.log(food,'ho eliminato un cibo dal carrello', store.Cart)
             // localStorage.removeItem('foods')
