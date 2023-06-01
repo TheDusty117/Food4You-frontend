@@ -46,9 +46,13 @@ export default {
   computed: {
     filteredRestaurants() {
       if (this.selectedCategories.length > 0) {
-        return this.restaurants.filter(restaurant => restaurant.categories.some(cat => this.selectedCategories.includes(cat.id)))
-      }
-      return this.restaurants
+        return this.restaurants.filter(restaurant => {
+        return this.selectedCategories.every(catId => {
+        return restaurant.categories.some(cat => cat.id === catId);
+      });
+    });
+  }
+  return this.restaurants;
     }
   },
   methods: {
