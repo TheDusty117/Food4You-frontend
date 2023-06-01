@@ -18,13 +18,21 @@
                 </div>
             </div>
         </div>
+        <div>
+            <PaymentForm />
+        </div>
     </div>
 </template>
 
 <script>
 import store from '../store'
+import PaymentForm from '../components/PaymentForm.vue'
 
 export default {
+    components: {
+        PaymentForm
+    },
+
     data() {
         return {
             store
