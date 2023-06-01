@@ -20,7 +20,7 @@
                     
                 </button>
 
-                <div  v-for="(food, index) in getLocalFood" :key="index"> </div>
+                <div  v-for="(food, index) in getLocalFood" :key="index"></div>
             </div>
 
 
@@ -43,23 +43,25 @@ export default {
             
             
             // localStorage.removeItem('foods')
-            this.store.Cart.splice(index, 1)
-            // Ottieni i dati dal localStorage
-            const storedData = localStorage.getItem('foods');
-            // Parsa i dati in un array
-            const storedFoods = JSON.parse(storedData) || [];
-            // Rimuovi l'elemento dall'array storedFoods utilizzando l'indice
-            storedFoods.splice(index, 1);
-            // Salva nuovamente i dati aggiornati nel localStorage:
-            localStorage.setItem('foods', JSON.stringify(storedFoods));
+            if (this.store.Cart.length > index) {
+                this.store.Cart.splice(index, 1);
+                localStorage.setItem('foods', JSON.stringify(this.store.Cart));
+            }
+            
         }
     },
     computed: {
         getLocalFood() {
+            
+            const storedData = localStorage.getItem('foods');
+            this.store.Cart = JSON.parse(storedData) || [];
+            // if (storedData) {
+            //     this.store.Cart = JSON.parse(storedData);
+            // }
             // localStorage.setItem('foods', JSON.stringify(this.store.NewFood))
-            return JSON.parse(localStorage.getItem('foods'));
+           // return JSON.parse(localStorage.getItem('foods'));
         },
-    }
+    },
 }
 </script>
 
