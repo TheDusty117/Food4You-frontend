@@ -39,7 +39,12 @@ export default {
             store.NewFood.splice(index, 1)
         }
     },
-
+    computed: {
+        getLocalFood() {
+            // localStorage.setItem('foods', JSON.stringify(this.store.NewFood))
+            return JSON.parse(localStorage.getItem('foods'));
+        },
+    }
 }
 </script>
 
