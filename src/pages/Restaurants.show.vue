@@ -2,7 +2,7 @@
   <template v-if="loading === false">
     
     <div class="container py-4">
-      <button><router-link :to="{ name: 'cart' }">Cart {{ this.store.Cart.length }}</router-link></button>
+      <button><router-link :to="{ name: 'cart' }">Cart {{ totalQuantity }}</router-link></button>
 
       <div class="restaurant-card">
         <h1 class="text-3xl font-bold mb-4">{{ restaurant.name }}</h1>
@@ -76,14 +76,30 @@ export default {
         });
     },
     AddFoodToCart(food) {
-      // console.log(food)
-      this.store.Cart.push(food)
-      localStorage.setItem('foods', JSON.stringify(this.store.Cart))
+    const existingFood = this.store.Cart.find((item) => item.name === food.name);
+    if (existingFood) {
+      existingFood.quantity += 1; // Incrementa la quantità se il cibo è già presente nel carrello
+    } else {
+      food.quantity = 1; // Imposta la quantità a 1 se è un nuovo cibo nel carrello
+      this.store.Cart.push(food);
     }
+
+    // Salva il carrello nel localStorage
+    localStorage.setItem('foods', JSON.stringify(this.store.Cart));
+  },
   },
   created() {
     this.fetchRestaurant(this.slug);
 
+  },
+  computed:{
+    totalQuantity() {
+    let quantity = 0;
+    this.store.Cart.forEach((food) => {
+      quantity += food.quantity;
+    });
+    return quantity;
+  },
   },
   beforeRouteUpdate(to, from) {
     const newSlug = to.params.slug;
