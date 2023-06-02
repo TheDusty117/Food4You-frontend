@@ -1,6 +1,6 @@
 <template>
   <template v-if="loading === false">
-    
+
     <div class="container py-4">
       <button><router-link :to="{ name: 'cart' }">Cart {{ this.store.Cart.length }}</router-link></button>
 
@@ -11,10 +11,10 @@
           <li v-for="category in restaurant.categories" :key="category.id" class="mb-2">{{ category.name }}</li>
         </ul>
       </div>
-      
 
-      
-      
+
+
+
 
       <h3 class="mb-2">Menù</h3>
       <ul class="list-unstyled">
@@ -26,7 +26,7 @@
             </div>
             <p class="food-item-description">{{ food.description }}</p>
             <button @click="AddFoodToCart(food)" class="btn btn-success">
-              ADD 
+              ADD
             </button>
           </div>
         </li>
@@ -76,7 +76,8 @@ export default {
         });
     },
     AddFoodToCart(food) {
-      // console.log(food)
+      console.log(food)
+      //if()
       this.store.Cart.push(food)
       localStorage.setItem('foods', JSON.stringify(this.store.Cart))
     }
@@ -117,7 +118,7 @@ ul {
   list-style-type: none;
 }
 
-.restaurant-card{
+.restaurant-card {
   margin: 1rem 0;
   border: 1px solid #ddd;
   padding: 1rem;

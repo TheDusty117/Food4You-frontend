@@ -1,55 +1,59 @@
 <template>
     <div class="container">
-      <div class="grid">
-        <div v-for="(food, index) in store.Cart" :key="index" class="card">
-          <p>{{ food.name }}</p>
-          <p>{{ food.price }}</p>
-          <button @click="RemoveFoodToCart(index, food)">
-            Delete food
-          </button>
+        <div v-if="this.store.Cart.length <= 0">
+            <h1>Nessun Elemento</h1>
         </div>
-      </div>
+
+        <div v-else class="grid">
+            <div v-for="(food, index) in store.Cart" :key="index" class="card">
+                <p>{{ food.name }}</p>
+                <p>{{ food.price }}</p>
+                <button @click="RemoveFoodToCart(index, food)">
+                    Delete food
+                </button>
+            </div>
+        </div>
     </div>
 
     <div>
-            <PaymentForm />
+        <PaymentForm />
     </div>
-  </template>
+</template>
   
- <script>
-  import store from '../store'
+<script>
+import store from '../store'
 
-    import PaymentForm from '../components/PaymentForm.vue'
-  export default {
+import PaymentForm from '../components/PaymentForm.vue'
+export default {
 
-        
+
     components: {
         PaymentForm
     },
 
 
     data() {
-      return {
-        store
-      }
+        return {
+            store
+        }
     },
     mounted() {
-      this.getLocalFood()
+        this.getLocalFood()
     },
     methods: {
-      RemoveFoodToCart(index, food) {
-        this.store.Cart.splice(index, 1);
-        localStorage.setItem('foods', JSON.stringify(this.store.Cart));
-      },
-      getLocalFood() {
-        const storedData = localStorage.getItem('foods');
-        if (storedData) {
-          this.store.Cart = JSON.parse(storedData);
-        }
-      },
+        RemoveFoodToCart(index, food) {
+            this.store.Cart.splice(index, 1);
+            localStorage.setItem('foods', JSON.stringify(this.store.Cart));
+        },
+        getLocalFood() {
+            const storedData = localStorage.getItem('foods');
+            if (storedData) {
+                this.store.Cart = JSON.parse(storedData);
+            }
+        },
     },
-  }
-  </script>
+}
+</script>
 
 <style lang="scss" scoped>
 .grid {
