@@ -6,7 +6,10 @@
       <button @click="RemoveFoodToCart(index, food)">Delete food</button>
       <button @click="RemoveOneFoodFromCart(index, food)">Remove One</button>
     </div>
-
+    <div v-if="isCartEmpty" >
+      Il carrello è vuoto.
+    </div>
+    <button @click="ClearCart">Svuota il carrello</button>
     <PaymentForm />
   </div>
 </template>
@@ -34,7 +37,7 @@
     created() {
       this.initializeCart();
     },
-    methods: {
+  methods: {
       RemoveFoodToCart(index, food) {
         this.store.Cart.splice(index, 1);
         localStorage.setItem('foods', JSON.stringify(this.store.Cart));
@@ -47,15 +50,23 @@
         }
         localStorage.setItem('foods', JSON.stringify(this.store.Cart));
       },
+      ClearCart() {
+        this.store.Cart = []; // Rimuove tutti gli elementi dal carrello
+        localStorage.removeItem('foods'); // Rimuove il carrello dal localStorage
+      },
       initializeCart() {
         const storedData = localStorage.getItem('foods');
         if (storedData) {
           this.store.Cart = JSON.parse(storedData);
         }
       },
-    },
-    computed:{
-      uniqueCart() {
+  },
+  computed:{
+    isCartEmpty() {
+      //console.log(this.isCartEmpty)
+    return this.store.Cart.length === 0; 
+  },
+    uniqueCart() {
     const uniqueItems = [];
     this.store.Cart.forEach((food) => {
       const existingItem = uniqueItems.find((item) => item.name === food.name);
@@ -66,7 +77,8 @@
     return uniqueItems;
   },
 
-    }
+    },
+    
   }
   </script>
 
@@ -86,4 +98,6 @@ img {
     padding: 10px;
     border: 3px solid;
 }
+
+
 </style>

@@ -76,17 +76,26 @@ export default {
         });
     },
     AddFoodToCart(food) {
-    const existingFood = this.store.Cart.find((item) => item.name === food.name);
-    if (existingFood) {
-      existingFood.quantity += 1; // Incrementa la quantità se il cibo è già presente nel carrello
-    } else {
-      food.quantity = 1; // Imposta la quantità a 1 se è un nuovo cibo nel carrello
-      this.store.Cart.push(food);
-    }
+  const newRestaurantId = food.restaurant_id;
+  const existingFoodIndex = this.store.Cart.findIndex(
+    (item) => item.restaurant_id !== newRestaurantId
+  );
 
-    // Salva il carrello nel localStorage
-    localStorage.setItem('foods', JSON.stringify(this.store.Cart));
-  },
+  if (existingFoodIndex !== -1) {
+    // Rimuovi tutti gli elementi dal carrello con restaurant_id diverso
+    this.store.Cart.splice(existingFoodIndex);
+  }
+
+  const existingFood = this.store.Cart.find((item) => item.name === food.name);
+  if (existingFood) {
+    existingFood.quantity += 1;
+  } else {
+    food.quantity = 1;
+    this.store.Cart.push(food);
+  }
+
+  localStorage.setItem('foods', JSON.stringify(this.store.Cart));
+},
   },
   created() {
     this.fetchRestaurant(this.slug);
