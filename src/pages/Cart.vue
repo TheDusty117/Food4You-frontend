@@ -11,7 +11,6 @@
                 <button @click="RemoveFoodToCart(index, food)">
                     Delete food
                 </button>
-                <p></p>
             </div>
         </div>
     </div>
@@ -36,7 +35,6 @@ export default {
     data() {
         return {
             store,
-            searchQuery: ''
         }
     },
     mounted() {
@@ -46,7 +44,7 @@ export default {
         RemoveFoodToCart(index, food) {
             this.store.Cart.splice(index, 1);
             localStorage.setItem('foods', JSON.stringify(this.store.Cart));
-            console.log(this.getDuplicate())
+            // console.log(food.id)
         },
         getLocalFood() {
             const storedData = localStorage.getItem('foods');

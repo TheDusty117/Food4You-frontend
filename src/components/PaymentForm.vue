@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="container">
         <!-- Form inputs for card details -->
         <div class="form-group col-3 mt-5">
             <input type="text" class="form-control" v-model="cardNumber" placeholder="Numero Carta xxxxxxxxxxxxxxxx"
