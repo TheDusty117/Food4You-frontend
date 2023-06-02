@@ -27,6 +27,10 @@
 export default {
   mounted() {
     console.log('nav bar mounted hook')
+  },
+  methods: {
+
+
   }
 }
 </script>
