@@ -1,9 +1,11 @@
 <template>
-  <header class="py-3 bg-slate-100">
+  <header class="header-style py-3 bg-slate-100">
+
+    
     <div class="container nav">
-
+      
       <router-link :to="{ name: 'home' }">Food4You</router-link>
-
+      
       <ul class="nav__menu">
         <li>
           <router-link :to="{ name: 'home' }">Home</router-link>
@@ -18,13 +20,23 @@
           <router-link :to="{ name: 'login' }">Login</router-link>
         </li>
       </ul>
-
+      
     </div>
+    <Hero/>
   </header>
 </template>
 
 <script>
+
+import Hero from './Hero.vue';
+
+
 export default {
+
+  components:{
+    Hero,
+  },
+
   mounted() {
     console.log('nav bar mounted hook')
   }
@@ -42,4 +54,9 @@ export default {
 .nav__menu {
   margin-left: auto;
 }
+
+header{
+  background-color: black;
+}
+
 </style>
