@@ -1,11 +1,11 @@
 <template>
-  <div>
+  <div class="restaurants-list">
     <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Seleziona le categorie</h5>
+      <div class="card-body container">
+        <h5 class="card-title">Oggi ho voglia di...</h5>
         <div class="row">
           <div class="col-4" v-for="category in categoriesArr" :key="category.id">
-            <div class="form-check">
+            <div class="form-check d-flex justify-content-center">
               <input class="form-check-input" type="checkbox" @change="selectCategory(category)" :id="category.id">
               <label class="form-check-label mb-2" :for="category.id">{{ category.name }}</label>
             </div>
@@ -103,6 +103,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+
+
+
+
 /* Stili per la checkbox */
 .form-check-input {
   width: 20px;
@@ -122,9 +127,29 @@ export default {
 
 /* Stili per la card */
 .card {
+  background-image: url(../../public/img/black-n-white-bg-filters.png);
+  background-size: cover;
+  height: 600px;
   border: none;
   border-radius: 0.5rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100vw;
+  .card-title{
+    text-transform: uppercase;
+    text-align: center;
+    font-family: 'Modak', sans-serif;
+    color: #F7A42C;
+    font-size: 80px;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: black;
+  }
+  .form-check{
+    font-family: 'Fredoka One', sans-serif;
+    color: white;
+    font-size: 30px;
+    background-color: #f7a22cc7;
+    border-radius: 999px;
+  }
 }
 
 .card-body {

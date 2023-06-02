@@ -1,10 +1,10 @@
 <template >
     <DefaultLayout>
         <div class="">
-            <div class="container">
+            <Restaurants></Restaurants>
+   
                 <h1 class="mt-5">Sono la home</h1>
-                <Restaurants></Restaurants>
-            </div>
+        
         </div>
     </DefaultLayout>
 </template>

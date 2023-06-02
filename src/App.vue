@@ -1,4 +1,6 @@
 <script>
+import '@fontsource/modak';
+
 // import Posts from './components/Restaurants.vue'
 import Header from './components/Header.vue';
 import Footer from './components/Footer.vue';
@@ -24,4 +26,10 @@ export default {
 .title {
   padding: 2rem 0;
 }
+
+#app{
+  background-color: black;
+}
+
+
 </style>

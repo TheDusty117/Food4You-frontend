@@ -9,6 +9,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fontsource-variable/baloo-bhaijaan-2": "^5.0.2",
+    "@fontsource/fredoka-one": "^5.0.0",
+    "@fontsource/modak": "^5.0.2",
     "@fortawesome/fontawesome-free": "^6.4.0",
     "@fortawesome/fontawesome-svg-core": "^6.4.0",
     "@fortawesome/free-brands-svg-icons": "^6.4.0",
