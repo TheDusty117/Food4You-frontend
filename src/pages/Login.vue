@@ -2,7 +2,7 @@
 
         <div class="container">
          <h1>sono il login</h1>
-       
+            <button @click="searchLogin">Login</button>
         </div>
 
     
@@ -12,10 +12,18 @@
 
 
     export default {
-    components: {
+
+
+        methods:{
+            searchLogin(){
+                window.location.href = 'http://127.0.0.1:8000/login'
+            }
+        },
+
+        components: {
 
      
-    }
+        }
     }
 </script>
 

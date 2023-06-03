@@ -1,7 +1,7 @@
 <template>
 
-        <div class="container">
-        <h1>sono il register</h1>
+    <div class="container">
+        <button @click="searchRegister">Register</button>
 
     </div>
 
@@ -12,9 +12,16 @@
 
 
     export default {
-    components: {
 
-    }
+        methods:{
+            searchRegister(){
+                window.location.href = 'http://127.0.0.1:8000/register'
+            }
+        },
+        
+        components: {
+
+        }
     }
 </script>
 
