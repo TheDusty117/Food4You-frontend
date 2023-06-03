@@ -7,7 +7,9 @@
 
         <h4 class="card-subtitle mb-3">Categoria</h4>
         <ul v-if="restaurant.categories && restaurant.categories.length > 0" class="list-unstyled">
-          <li v-for="cat in restaurant.categories" :key="cat.id" class="mb-2">{{ cat.name }}</li>
+          <li v-for="cat in restaurant.categories" :key="cat.id" class="mb-2">{{ cat.name }}
+          </li>
+          <img :src="restaurant.img_restaurant" alt="">
         </ul>
 
         <router-link :to="{ name: 'restaurants.show', params: { slug: restaurant.slug } }"
