@@ -25,6 +25,7 @@
               <p class="food-item-price">Price: {{ food.price }}</p>
             </div>
             <p class="food-item-description">{{ food.description }}</p>
+            <img :src="food.image" alt="">
             <button @click="AddFoodToCart(food)" class="btn btn-success">
               ADD 
             </button>
