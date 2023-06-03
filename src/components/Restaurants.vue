@@ -8,23 +8,37 @@
 
 
   <div class="container cat-rest-container restaurants-list">
-      <div class="card-body container">
-        <h5 class="card-title">Oggi ho voglia di...</h5>
-        <div class="row justify-content-evenly">
-          <div class="col-2 category-item" v-for="category in categoriesArr" :key="category.id">
-            <div class="form-check d-flex justify-content-center">
-              <input class="form-check-input" type="checkbox" @change="selectCategory(category)" :id="category.id" >
-              <label class="form-check-label mb-2" :for="category.id">{{ category.name }}</label>
+    <div class="row">
+
+      <div class="aside col-sm-2">
+        
+        <div class="card-body container">
+          <h5 class="card-title">Filtri</h5>
+          <div class="row justify-content-evenly">
+
+            <div class="col-12 category-item" v-for="category in categoriesArr" :key="category.id">
+              <div class="form-check d-flex flex-column justify-content-start">
+                <img class="logo-categoria" src="../../public/img/italiano.png" alt="">
+                <input class="form-check-input" type="checkbox" @change="selectCategory(category)" :id="category.id" >
+                <label class="form-check-label mb-2" :for="category.id">{{ category.name }}</label>
+              </div>
             </div>
           </div>
         </div>
       </div>
-
-    <div class="row mt-3">
-      <div class="col-lg-6" v-for="restaurant in filteredRestaurants" :key="restaurant.id">
-        <RestaurantsCard :restaurant="restaurant" />
+  
+      <div class="content col-sm-10">
+        <div class="row mt-3">
+          <div class="col-lg-6 p-0" v-for="restaurant in filteredRestaurants" :key="restaurant.id">
+            <RestaurantsCard :restaurant="restaurant" />
+          </div>
+        </div>
+  
       </div>
+
     </div>
+    
+
   </div>
 
   
@@ -112,6 +126,21 @@ export default {
 <style lang="scss" scoped>
 
 
+.aside{
+  background-color: #44B925;
+  min-height: 900px;
+}
+
+.content{
+  background-color: whitesmoke;
+  min-height: 900px;
+}
+
+.category-item{
+  font-family: 'Baloo Bhaijaan 2 Variable', sans-serif;
+  text-transform: uppercase;
+}
+
 //qui gestisci sia cat che restaurants
 .cat-rest-container{
   color: black;
@@ -131,7 +160,7 @@ export default {
   height: 20px;
   margin-right: 10px;
   //nascondi quadratino
-  // display: none;
+  display: none;
 }
 
 .form-check-input:checked {
@@ -142,6 +171,9 @@ export default {
 /* Stili per il testo delle categorie */
 .form-check-label {
   font-weight: bold;
+}
+.logo-categoria{
+  width: 50px;
 }
 
 /* Stili per la card */

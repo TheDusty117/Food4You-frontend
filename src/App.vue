@@ -28,8 +28,12 @@ export default {
 }
 
 #app{
-  background-color: rgb(255, 255, 255);
+  background-color: white;
+  background-image: url(../public/img/rotate-image-bnw.png);
+  background-position: center;
+  background-size: contain;
 }
+
 
 
 </style>

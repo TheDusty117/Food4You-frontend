@@ -3,17 +3,20 @@
 
     <div class="card-custom">
 
-      <h3 class="card-title">{{ restaurant.name }}</h3>
-      <p class="card-text">{{ restaurant.address }}</p>
-
-      <h4 class="card-subtitle mb-3">Categoria</h4>
-      <ul v-if="restaurant.categories && restaurant.categories.length > 0" class="list-unstyled d-flex gap-3">
-        <li v-for="cat in restaurant.categories" :key="cat.id" class="mb-2">{{ cat.name }}</li>
-      </ul>
-      <img class="restaurant-logo img-fluid" :src="restaurant.img_restaurant" alt="">
-
-      <router-link :to="{ name: 'restaurants.show', params: { slug: restaurant.slug } }"
-        class="btn btn-primary">Apri</router-link>
+      
+      <router-link style="text-decoration: none; color: black;" :to="{ name: 'restaurants.show', params: { slug: restaurant.slug } }">
+        
+        <!-- immagine ristorante -->
+        <img class="restaurant-logo img-fluid" :src="restaurant.img_restaurant" alt="">
+        <!-- categorie del ristorante singolo -->
+        <h4 class="card-subtitle mb-3"></h4>
+        <h3 class="card-title">{{ restaurant.name }}</h3>
+        <p class="card-text">{{ restaurant.address }}</p>
+        <ul v-if="restaurant.categories && restaurant.categories.length > 0" class="individual-restaurant list-unstyled d-flex gap-3">
+          <li v-for="cat in restaurant.categories" :key="cat.id" class="mb-2">{{ cat.name }}</li>
+        </ul>
+      
+      </router-link>
 
     </div>
 
@@ -38,6 +41,11 @@ export default {
 <style lang="scss" scoped>
 .card-custom {
   margin-bottom: 1rem;
+}
+
+.individual-restaurant{
+  font-family: 'Baloo Bhaijaan 2 Variable', sans-serif;
+  text-transform: uppercase;
 }
 
 .card-title {
