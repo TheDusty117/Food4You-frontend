@@ -28,7 +28,7 @@ export default {
 }
 
 #app{
-  background-color: black;
+  background-color: rgb(255, 255, 255);
 }
 
 

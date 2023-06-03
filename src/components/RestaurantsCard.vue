@@ -1,21 +1,22 @@
 <template>
-  <div class="card-deck">
-    <div class="card">
-      <div class="card-body">
-        <h3 class="card-title">{{ restaurant.name }}</h3>
-        <p class="card-text">{{ restaurant.address }}</p>
+  <div class="container">
 
-        <h4 class="card-subtitle mb-3">Categoria</h4>
-        <ul v-if="restaurant.categories && restaurant.categories.length > 0" class="list-unstyled">
-          <li v-for="cat in restaurant.categories" :key="cat.id" class="mb-2">{{ cat.name }}
-          </li>
-          <img :src="restaurant.img_restaurant" alt="">
-        </ul>
+    <div class="card-custom">
 
-        <router-link :to="{ name: 'restaurants.show', params: { slug: restaurant.slug } }"
-          class="btn btn-primary">Apri</router-link>
-      </div>
+      <h3 class="card-title">{{ restaurant.name }}</h3>
+      <p class="card-text">{{ restaurant.address }}</p>
+
+      <h4 class="card-subtitle mb-3">Categoria</h4>
+      <ul v-if="restaurant.categories && restaurant.categories.length > 0" class="list-unstyled d-flex gap-3">
+        <li v-for="cat in restaurant.categories" :key="cat.id" class="mb-2">{{ cat.name }}</li>
+      </ul>
+      <img class="restaurant-logo img-fluid" :src="restaurant.img_restaurant" alt="">
+
+      <router-link :to="{ name: 'restaurants.show', params: { slug: restaurant.slug } }"
+        class="btn btn-primary">Apri</router-link>
+
     </div>
+
   </div>
 </template>
 
@@ -35,13 +36,13 @@ export default {
 </script>
   
 <style lang="scss" scoped>
-.card {
-  width: 18rem;
+.card-custom {
   margin-bottom: 1rem;
 }
 
 .card-title {
-  font-size: 1.5rem;
+  font-family: 'Fredoka One', sans-serif;
+  font-size: 2rem;
   font-weight: bold;
 }
 
