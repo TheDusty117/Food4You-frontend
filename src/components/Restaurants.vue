@@ -1,10 +1,18 @@
 <template>
+
+  <section class="hero-section">
+    <Hero/>
+  </section>
+
+
+
+
   <div class="restaurants-list">
     <div class="card">
       <div class="card-body container">
         <h5 class="card-title">Oggi ho voglia di...</h5>
         <div class="row">
-          <div class="col-4" v-for="category in categoriesArr" :key="category.id">
+          <div class="col-2 category-item" v-for="category in categoriesArr" :key="category.id">
             <div class="form-check d-flex justify-content-center">
               <input class="form-check-input" type="checkbox" @change="selectCategory(category)" :id="category.id">
               <label class="form-check-label mb-2" :for="category.id">{{ category.name }}</label>
@@ -23,18 +31,17 @@
 </template>
 
 
-
-
-
-
-
 <script>
 import axios from 'axios'
+
+import Hero from './Hero.vue';
+
 import RestaurantsCard from './RestaurantsCard.vue'
 
 export default {
   components: {
     RestaurantsCard,
+    Hero,
   },
   data() {
     return {
@@ -106,7 +113,11 @@ export default {
 
 
 
-
+.hero-section{
+  padding-bottom: 10px;
+  background-color: #44B925;
+  border-bottom: 5px solid black;
+}
 
 /* Stili per la checkbox */
 .form-check-input {
@@ -127,9 +138,10 @@ export default {
 
 /* Stili per la card */
 .card {
-  background-image: url(../../public/img/black-n-white-bg-filters.png);
+  // background-image: url(../../public/img/black-n-white-bg-filters.png);
+  background-color: #F7A42C;
   background-size: cover;
-  height: 600px;
+  // height: 00px;
   border: none;
   border-radius: 0.5rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -145,11 +157,15 @@ export default {
   }
   .form-check{
     font-family: 'Fredoka One', sans-serif;
-    color: white;
-    font-size: 30px;
-    background-color: #f7a22cc7;
+    color: black;
+    font-size: 24px;
+    background-color: white;
     border-radius: 999px;
   }
+}
+
+.category-item{
+  
 }
 
 .card-body {

@@ -1,6 +1,6 @@
 <template>
   <div class="hero">
-    <img src="../../public/img/Hero V2 Food4You.png" alt="">
+    <img src="../../public/img/HERO DEF.png" alt="">
   </div>
 </template>
 
@@ -18,6 +18,7 @@ import '@fontsource/modak';
     width: 100vw;
     img{
       width: 100vw;
+      border: 5px solid black;
     }
   }
 
