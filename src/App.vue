@@ -28,9 +28,9 @@ export default {
 
 
 #app {
-  background-image: url('./public/img/black-n-white-bg-filters.png');
+  /* background-image: url('./public/img/black-n-white-bg-filters.png');
   background-position: center;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; */
 
 }
 
