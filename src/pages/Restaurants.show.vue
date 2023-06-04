@@ -1,7 +1,7 @@
 <template>
   <template v-if="loading === false">
 
-    <div class="container  py-4">
+    <div class="container p-4">
       <!-- carrello -->
       <button><router-link :to="{ name: 'cart' }">Cart {{ totalQuantity }}</router-link></button>
 
@@ -9,8 +9,12 @@
         <div class="restaurant-card">
           <h1 class="mb-4 text-center">{{ restaurant.name }}</h1>
 
-          <p>{{ restaurant.description }}</p>
-          <ul class="list-unstyled mb-4">
+          <p>Benvenuti alla Trattoria del Nonno, un'accogliente trattoria italiana che vi farà sentire come a casa. Con
+            una vasta selezione di piatti tradizionali italiani preparati con passione e ingredienti freschi, vi
+            delizieremo con i sapori autentici dell'Italia. Godetevi una serata rilassante e gustate i nostri deliziosi
+            antipasti, paste fatte in casa e prelibatezze di carne e pesce. La nostra atmosfera familiare vi farà sentire
+            parte della nostra grande famiglia culinaria. Venite a trovarci e immergetevi nella tradizione italiana.</p>
+          <!-- <ul class="list-unstyled mb-4">
             <h3>Contatti</h3>
             <li class="mb-2">
               <FontAwesomeIcon icon="fa-solid fa-location-pin" />{{ restaurant.address }}
@@ -19,7 +23,7 @@
             <li class="mb-2">{{ restaurant.telephone_number }}</li>
             <li class="mb-2">{{ restaurant.vat }}</li>
 
-          </ul>
+          </ul> -->
         </div>
         <figure class="image-card"><img :src="restaurant.img_restaurant" alt=""></figure>
       </div>
@@ -35,15 +39,12 @@
         </div>
       </ul> -->
 
-      <h3 class="mb-2">Menù</h3>
-      <div class="container-menu">
+      <div class="container-menu p-4">
 
         <ul class="grid-menu">
-          <li v-for="food in restaurant.food" :key="food.id" class="card-food">
+          <li v-for="food in restaurant.food" :key="food.id" class="col-12 col-md-6 col-lg-6 col-xl-6 card-food">
             <div class="food-image">
-              <figure class="m-0">
-                <img :src="food.image" alt="">
-              </figure>
+              <img :src="food.image" alt="">
               <div class="offcanvas-price">
                 <p class="food-item-price">${{ food.price }}</p>
                 <button @click="AddFoodToCart(food)" class="add-food btn btn-success">
@@ -56,8 +57,6 @@
                 <h4 class="food-item-name">{{ food.name }}</h4>
               </div>
               <p class="food-item-description">{{ food.description }}</p>
-
-
             </div>
           </li>
         </ul>
@@ -173,9 +172,8 @@ export default {
 }
 
 .grid-menu {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 h1 {
@@ -217,17 +215,16 @@ ul {
 
   &:hover .offcanvas-price {
     width: 100%;
-    bottom: 28%;
+    bottom: 32%;
     display: flex;
     background-color: white;
     padding: 1rem;
     justify-content: space-evenly;
     align-items: center;
-    transition-duration: 0.8s;
-    transition-timing-function: ease-out;
-    opacity: 0.9;
+    transition-duration: 0.2s;
+    transition-timing-function: linear;
+    opacity: 1;
     position: absolute;
-
 
     p {
       margin: 0;
@@ -298,10 +295,10 @@ ul {
 
 .food-item-price {
   font-size: 0.9rem;
-  right: 10px;
   color: black;
   bottom: 105px;
-  font-size: large;
+  font-size: larger;
+  font-weight: 700;
 }
 
 .food-item-description {
