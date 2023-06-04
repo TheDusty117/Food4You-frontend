@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container mt-5 mb-5 px-5 py-4">
     <div class="row">
       <div class="col-md-12">
         <div class="card-deck">
@@ -16,13 +16,13 @@
           Il carrello è vuoto.
         </div>
         <div class="card mt-3">
-          <div class="card-body">
+          <div class="card-body green">
             <h5 class="card-title">Totale da pagare</h5>
             <p class="card-text">€ {{ totalToPay }}</p>
           </div>
         </div>
-        <button @click="clearCart" class="btn btn-secondary mt-3 mx-3">Svuota il carrello</button>
-        <button @click="confirmAbandonCart" class="btn btn-secondary mt-3">Torna ai ristoranti</button>
+        <button @click="clearCart" class="btn btn-secondary m5-3 mx-3">Svuota il carrello</button>
+        <button @click="confirmAbandonCart" class="btn btn-secondary mt-5 mb-5">Torna ai ristoranti</button>
         <PaymentForm />
         <ConfirmDialog v-if="showConfirmDialog" @confirm="abandonCart" @cancel="cancelAbandonCart">
           Sei sicuro di voler abbandonare il carrello?
@@ -105,6 +105,15 @@ export default {
 
 <style lang="scss" scoped>
 .card {
-  border: 3px solid;
+  //border: 3px solid black;
+  border-radius: 15px;
+}
+
+
+
+
+.container {
+  background-color: #F7A42C;
+  border-radius: 15px;
 }
 </style>

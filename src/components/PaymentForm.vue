@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <div class="card mt-4 mx-auto" style="max-width: 500px;">
+        <div class="card mt-4 mx-auto mb-5" style="max-width: 500px;">
             <div class="card-body">
                 <h5 class="card-title">Inserisci i dati di pagamento</h5>
 
@@ -96,13 +96,10 @@
         <div v-if="paymentStatus === 'completed'" class="modal fade show d-block" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Pagamento completato</h5>
+                    <div class="modal-header text-center d-flex justify-content-center">
+                        <h5 class="modal-title text-center">Pagamento completato</h5>
                     </div>
-                    <div class="modal-body">
-                        <p>Pagamento completato con successo!</p>
-                    </div>
-                    <div class="modal-footer">
+                    <div class="modal-footer d-flex justify-content-center">
                         <button type="button" class="btn btn-primary" data-dismiss="modal" @click="goToOrderSummary">
                             Vai al riepilogo dell'ordine
                         </button>
@@ -113,6 +110,9 @@
                 </div>
             </div>
         </div>
+
+
+
 
         <!-- Overlay -->
         <div v-if="paymentStatus === 'completed'" class="overlay"></div>

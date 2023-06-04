@@ -22,14 +22,14 @@ export default {
 </template>
 
 <style >
-
 .title {
   padding: 2rem 0;
 }
 
-#app{
-  background-color: black;
+#app {
+  background-image: url('./public/img/black-n-white-bg-filters.png');
+  background-position: center;
+  background-repeat: no-repeat;
+
 }
-
-
 </style>
