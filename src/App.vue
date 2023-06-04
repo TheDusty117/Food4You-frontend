@@ -22,18 +22,16 @@ export default {
 </template>
 
 <style >
-
 .title {
   padding: 2rem 0;
 }
 
-#app{
-  background-color: white;
-  /* background-image: url(../public/img/rotate-image-bnw.png);
+
+#app {
+  background-image: url('./public/img/black-n-white-bg-filters.png');
   background-position: center;
-  background-size: contain; */
+  background-repeat: no-repeat;
+
 }
-
-
 
 </style>

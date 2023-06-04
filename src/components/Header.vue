@@ -81,6 +81,9 @@ export default {
 }
 
 header{
+  top: 0;
+  height: 124px;
+  position: sticky;
   font-family: 'Modak', sans-serif;
   
   .nav-element{
@@ -122,7 +125,7 @@ header{
 
 header{
   background-color: #44B925;
-  // border: 5px solid black;
+
 }
 
 </style>

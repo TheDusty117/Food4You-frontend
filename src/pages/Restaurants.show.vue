@@ -1,37 +1,70 @@
 <template>
   <template v-if="loading === false">
-    
-    <div class="container py-4">
-      <button><router-link :to="{ name: 'cart' }">Cart {{ totalQuantity }}</router-link></button>
 
-      <div class="restaurant-card">
-        <h1 class="text-3xl font-bold mb-4">{{ restaurant.name }}</h1>
-        <h3 class="mb-2">Tipologie</h3>
-        <ul class="list-unstyled mb-4">
-          <li v-for="category in restaurant.categories" :key="category.id" class="mb-2">{{ category.name }}</li>
+    <div class="container p-4">
+      <!-- carrello -->
+      <button type="button" class="mb-3 btn btn-primary position-relative">
+        <router-link class="text-decoration-none text-uppercase text-white" :to="{ name: 'cart' }"> Cart
+        </router-link>
+        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+          {{ totalQuantity }}
+          <span class="visually-hidden">unread messages</span>
+        </span>
+      </button>
+
+      <div class="grid-restaurant">
+        <div class="restaurant-card col col-lg-6">
+          <h1 class="mb-4 text-center">{{ restaurant.name }}</h1>
+
+
+          <ul class="list-unstyled mb-4">
+            <h3>Contatti</h3>
+            <li class="mb-2">
+              <FontAwesomeIcon icon="fa-solid fa-location-pin" />{{ restaurant.address }}
+            </li>
+            <li class="mb-2">{{ restaurant.email }}</li>
+            <li class="mb-2">{{ restaurant.telephone_number }}</li>
+            <li class="mb-2">{{ restaurant.vat }}</li>
+
+          </ul>
+        </div>
+        <figure class="image-card col col-lg-6"><img :src="restaurant.img_restaurant" alt=""></figure>
+      </div>
+
+      <!-- <ul class="list-unstyled mb-4">
+        <div class="category-card">
+          <div class="title-type">
+            <h3 class="mb-2">Categorie</h3>
+          </div>
+          <div class="type">
+            <li v-for="category in restaurant.categories" :key="category.id" class="">{{ category.name }}</li>
+          </div>
+        </div>
+      </ul> -->
+
+      <div class="container-menu p-4">
+
+        <ul class="grid-menu">
+          <li v-for="food in restaurant.food" :key="food.id"
+            class="my-3 mx-5 mx-sm-0 col col-md-6 col-lg-6 col-xl-6 card-food">
+            <div class="food-image">
+              <img :src="food.image" alt="">
+              <div class="offcanvas-price">
+                <p class="food-item-price">${{ food.price }}</p>
+                <button @click="AddFoodToCart(food)" class="add-food btn btn-success">
+                  ADD TO CART
+                </button>
+              </div>
+            </div>
+            <div class="food-item">
+              <div class="food-item-info">
+                <h4 class="food-item-name">{{ food.name }}</h4>
+              </div>
+              <p class="food-item-description">{{ food.description }}</p>
+            </div>
+          </li>
         </ul>
       </div>
-      
-
-      
-      
-
-      <h3 class="mb-2">Menù</h3>
-      <ul class="list-unstyled">
-        <li v-for="food in restaurant.food" :key="food.id" class="mb-2">
-          <div class="food-item">
-            <div class="food-item-info">
-              <h4 class="food-item-name">{{ food.name }}</h4>
-              <p class="food-item-price">Price: {{ food.price }}</p>
-            </div>
-            <p class="food-item-description">{{ food.description }}</p>
-            <img :src="food.image" alt="">
-            <button @click="AddFoodToCart(food)" class="btn btn-success">
-              ADD 
-            </button>
-          </div>
-        </li>
-      </ul>
     </div>
   </template>
 </template>
@@ -77,39 +110,40 @@ export default {
         });
     },
     AddFoodToCart(food) {
-  const newRestaurantId = food.restaurant_id;
-  const existingFoodIndex = this.store.Cart.findIndex(
-    (item) => item.restaurant_id !== newRestaurantId
-  );
+      const newRestaurantId = food.restaurant_id;
+      const existingFoodIndex = this.store.Cart.findIndex(
+        (item) => item.restaurant_id !== newRestaurantId
+      );
 
-  if (existingFoodIndex !== -1) {
-    // Rimuovi tutti gli elementi dal carrello con restaurant_id diverso
-    this.store.Cart.splice(existingFoodIndex);
-  }
+      if (existingFoodIndex !== -1) {
+        // Rimuovi tutti gli elementi dal carrello con restaurant_id diverso
+        this.store.Cart.splice(existingFoodIndex);
+      }
 
-  const existingFood = this.store.Cart.find((item) => item.name === food.name);
-  if (existingFood) {
-    existingFood.quantity += 1;
-  } else {
-    food.quantity = 1;
-    this.store.Cart.push(food);
-  }
+      const existingFood = this.store.Cart.find((item) => item.name === food.name);
+      if (existingFood) {
+        existingFood.quantity += 1;
+      } else {
+        food.quantity = 1;
+        this.store.Cart.push(food);
+      }
 
-  localStorage.setItem('foods', JSON.stringify(this.store.Cart));
-},
+      console.log(this.restaurant)
+      localStorage.setItem('foods', JSON.stringify(this.store.Cart));
+    },
   },
   created() {
     this.fetchRestaurant(this.slug);
 
   },
-  computed:{
+  computed: {
     totalQuantity() {
-    let quantity = 0;
-    this.store.Cart.forEach((food) => {
-      quantity += food.quantity;
-    });
-    return quantity;
-  },
+      let quantity = 0;
+      this.store.Cart.forEach((food) => {
+        quantity += food.quantity;
+      });
+      return quantity;
+    },
   },
   beforeRouteUpdate(to, from) {
     const newSlug = to.params.slug;
@@ -119,6 +153,30 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.container-menu {
+
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.grid-restaurant {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+}
+
+.food-image {
+  img {
+    width: 100%;
+  }
+}
+
+.grid-menu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8%;
+}
+
 h1 {
   font-size: 2.5rem;
   font-weight: bold;
@@ -143,26 +201,98 @@ ul {
   list-style-type: none;
 }
 
-.restaurant-card{
-  margin: 1rem 0;
+.restaurant-card {
+
   border: 1px solid #ddd;
   padding: 1rem;
-  border-radius: 4px;
+  border-radius: 8px;
   background-color: #f7f7f7;
+  flex-basis: 48%;
+  // background-image: url("/images/NONNO.png");
+  // background-repeat: no-repeat;
+  // background-size: contain;
 }
+
+.card-food {
+  position: relative;
+  flex-basis: 46%;
+
+  &:hover .offcanvas-price {
+    width: 100%;
+    bottom: 30%;
+    display: flex;
+    background-color: white;
+    padding: 1rem;
+    justify-content: space-evenly;
+    align-items: center;
+    transition-duration: 0.2s;
+    transition-timing-function: linear;
+    opacity: 1;
+    position: absolute;
+
+    p {
+      margin: 0;
+    }
+  }
+}
+
+.offcanvas-price {
+  opacity: 0;
+  position: absolute;
+}
+
+.category-card {
+  border: 1px solid #ddd;
+  padding: 1rem;
+  border-radius: 8px;
+  background-color: #f7f7f7;
+  margin-top: 1rem;
+
+  .title-type {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .type {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding-top: 0.5rem;
+  }
+
+}
+
+.image-card {
+  margin: 0;
+  padding: 0;
+  flex-basis: 48%;
+
+
+  img {
+    width: 100%;
+    border-radius: 8px;
+    aspect-ratio: 12/5;
+    object-position: center;
+    object-fit: cover;
+    height: 100%;
+
+  }
+
+
+}
+
+
 
 .food-item {
   display: flex;
-  align-items: center;
-  border: 1px solid #ddd;
-  padding: 1rem;
-  border-radius: 4px;
+  //  align-items: center;
+  // border: 1px solid #ddd;
+  padding: 0.8rem;
+  // border-radius: 4px;
   background-color: #f7f7f7;
-}
+  flex-wrap: wrap;
 
-.food-item-info {
-  flex: 1;
-  margin-right: 1rem;
 }
 
 .food-item-name {
@@ -170,12 +300,15 @@ ul {
 }
 
 .food-item-price {
-  color: #888;
   font-size: 0.9rem;
-  margin-bottom: 0.5rem;
+  color: black;
+  bottom: 105px;
+  font-size: larger;
+  font-weight: 700;
 }
 
 .food-item-description {
   color: #666;
+  margin: 0;
 }
 </style>
