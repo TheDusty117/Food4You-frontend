@@ -12,22 +12,18 @@
         </span>
       </button>
 
-      <div class="grid-restaurant">
-        <div class="restaurant-card col col-lg-6">
+      <div class="restaurant-card ">
+        <ul class="list-unstyled mb-4">
           <h1 class="mb-4 text-center">{{ restaurant.name }}</h1>
+          <h3>Contatti</h3>
+          <li class="mb-2">
+            <FontAwesomeIcon icon="fa-solid fa-location-pin" />{{ restaurant.address }}
+          </li>
+          <li class="mb-2">{{ restaurant.email }}</li>
+          <li class="mb-2">{{ restaurant.telephone_number }}</li>
+          <li class="mb-2">{{ restaurant.vat }}</li>
 
-
-          <ul class="list-unstyled mb-4">
-            <h3>Contatti</h3>
-            <li class="mb-2">
-              <FontAwesomeIcon icon="fa-solid fa-location-pin" />{{ restaurant.address }}
-            </li>
-            <li class="mb-2">{{ restaurant.email }}</li>
-            <li class="mb-2">{{ restaurant.telephone_number }}</li>
-            <li class="mb-2">{{ restaurant.vat }}</li>
-
-          </ul>
-        </div>
+        </ul>
         <figure class="image-card col col-lg-6"><img :src="restaurant.img_restaurant" alt=""></figure>
       </div>
 
@@ -202,15 +198,26 @@ ul {
 }
 
 .restaurant-card {
-
+  display: flex;
   border: 1px solid #ddd;
-  padding: 1rem;
   border-radius: 8px;
   background-color: #f7f7f7;
-  flex-basis: 48%;
+
+
   // background-image: url("/images/NONNO.png");
   // background-repeat: no-repeat;
   // background-size: contain;
+  .list-unstyled {
+    padding: 1rem;
+    flex-basis: 0;
+
+    h1 {
+
+      font-family: 'Fredoka One', sans-serif;
+      font-size: 2rem;
+      font-weight: bold;
+    }
+  }
 }
 
 .card-food {
@@ -266,8 +273,7 @@ ul {
 .image-card {
   margin: 0;
   padding: 0;
-  flex-basis: 48%;
-
+  flex-grow: 1;
 
   img {
     width: 100%;
@@ -276,9 +282,7 @@ ul {
     object-position: center;
     object-fit: cover;
     height: 100%;
-
   }
-
 
 }
 
