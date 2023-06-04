@@ -3,18 +3,21 @@
 
     <div class="container p-4">
       <!-- carrello -->
-      <button><router-link :to="{ name: 'cart' }">Cart {{ totalQuantity }}</router-link></button>
+      <button type="button" class="mb-3 btn btn-primary position-relative">
+        <router-link class="text-decoration-none text-uppercase text-white" :to="{ name: 'cart' }"> Cart
+        </router-link>
+        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+          {{ totalQuantity }}
+          <span class="visually-hidden">unread messages</span>
+        </span>
+      </button>
 
       <div class="grid-restaurant">
-        <div class="restaurant-card">
+        <div class="restaurant-card col col-lg-6">
           <h1 class="mb-4 text-center">{{ restaurant.name }}</h1>
 
-          <p>Benvenuti alla Trattoria del Nonno, un'accogliente trattoria italiana che vi farà sentire come a casa. Con
-            una vasta selezione di piatti tradizionali italiani preparati con passione e ingredienti freschi, vi
-            delizieremo con i sapori autentici dell'Italia. Godetevi una serata rilassante e gustate i nostri deliziosi
-            antipasti, paste fatte in casa e prelibatezze di carne e pesce. La nostra atmosfera familiare vi farà sentire
-            parte della nostra grande famiglia culinaria. Venite a trovarci e immergetevi nella tradizione italiana.</p>
-          <!-- <ul class="list-unstyled mb-4">
+
+          <ul class="list-unstyled mb-4">
             <h3>Contatti</h3>
             <li class="mb-2">
               <FontAwesomeIcon icon="fa-solid fa-location-pin" />{{ restaurant.address }}
@@ -23,9 +26,9 @@
             <li class="mb-2">{{ restaurant.telephone_number }}</li>
             <li class="mb-2">{{ restaurant.vat }}</li>
 
-          </ul> -->
+          </ul>
         </div>
-        <figure class="image-card"><img :src="restaurant.img_restaurant" alt=""></figure>
+        <figure class="image-card col col-lg-6"><img :src="restaurant.img_restaurant" alt=""></figure>
       </div>
 
       <!-- <ul class="list-unstyled mb-4">
@@ -42,7 +45,8 @@
       <div class="container-menu p-4">
 
         <ul class="grid-menu">
-          <li v-for="food in restaurant.food" :key="food.id" class="col-12 col-md-6 col-lg-6 col-xl-6 card-food">
+          <li v-for="food in restaurant.food" :key="food.id"
+            class="my-3 mx-5 mx-sm-0 col col-md-6 col-lg-6 col-xl-6 card-food">
             <div class="food-image">
               <img :src="food.image" alt="">
               <div class="offcanvas-price">
@@ -156,14 +160,10 @@ export default {
 }
 
 .grid-restaurant {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-
-
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
 }
-
-
 
 .food-image {
   img {
@@ -174,6 +174,7 @@ export default {
 .grid-menu {
   display: flex;
   flex-wrap: wrap;
+  gap: 8%;
 }
 
 h1 {
@@ -201,10 +202,12 @@ ul {
 }
 
 .restaurant-card {
+
   border: 1px solid #ddd;
   padding: 1rem;
   border-radius: 8px;
   background-color: #f7f7f7;
+  flex-basis: 48%;
   // background-image: url("/images/NONNO.png");
   // background-repeat: no-repeat;
   // background-size: contain;
@@ -212,10 +215,11 @@ ul {
 
 .card-food {
   position: relative;
+  flex-basis: 46%;
 
   &:hover .offcanvas-price {
     width: 100%;
-    bottom: 32%;
+    bottom: 30%;
     display: flex;
     background-color: white;
     padding: 1rem;
@@ -262,6 +266,8 @@ ul {
 .image-card {
   margin: 0;
   padding: 0;
+  flex-basis: 48%;
+
 
   img {
     width: 100%;
