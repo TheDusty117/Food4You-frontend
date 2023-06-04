@@ -92,12 +92,30 @@
             </div>
         </div>
 
-        <!-- Payment status message -->
-        <p v-if="paymentStatus === 'completed'" class="text-success mt-3">Pagamento completato</p>
+        <!-- Payment status popup -->
+        <div v-if="paymentStatus === 'completed'" class="modal fade show d-block" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Pagamento completato</h5>
+                    </div>
+                    <div class="modal-body">
+                        <p>Pagamento completato con successo!</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal" @click="goToOrderSummary">
+                            Vai al riepilogo dell'ordine
+                        </button>
+                        <button type="button" class="btn btn-primary" @click="goToRestaurants">
+                            Effettua un altro ordine
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-        <!-- Go to order summary button -->
-        <button v-if="paymentStatus === 'completed'" class="btn btn-primary mt-3" @click="goToOrderSummary">Vai al riepilogo
-            dell'ordine</button>
+        <!-- Overlay -->
+        <div v-if="paymentStatus === 'completed'" class="overlay"></div>
     </div>
 </template>
   
@@ -159,7 +177,10 @@ export default {
                 shippingPhoneNumber: false,
             };
 
-            if (this.cardNumber.length !== 16 || !/^\d+$/.test(this.cardNumber)) {
+            if (
+                this.cardNumber.length !== 16 ||
+                !/^\d+$/.test(this.cardNumber)
+            ) {
                 this.validationErrors.cardNumber = true;
                 isValid = false;
             }
@@ -174,7 +195,10 @@ export default {
                 isValid = false;
             }
 
-            if (this.cardCVC.length !== 3 || !/^\d+$/.test(this.cardCVC)) {
+            if (
+                this.cardCVC.length !== 3 ||
+                !/^\d+$/.test(this.cardCVC)
+            ) {
                 this.validationErrors.cardCVC = true;
                 isValid = false;
             }
@@ -204,12 +228,18 @@ export default {
                 isValid = false;
             }
 
-            if (this.shippingPostalCode.length !== 5 || !/^\d+$/.test(this.shippingPostalCode)) {
+            if (
+                this.shippingPostalCode.length !== 5 ||
+                !/^\d+$/.test(this.shippingPostalCode)
+            ) {
                 this.validationErrors.shippingPostalCode = true;
                 isValid = false;
             }
 
-            if (this.shippingPhoneNumber.length < 7 || !/^\d+$/.test(this.shippingPhoneNumber)) {
+            if (
+                this.shippingPhoneNumber.length < 7 ||
+                !/^\d+$/.test(this.shippingPhoneNumber)
+            ) {
                 this.validationErrors.shippingPhoneNumber = true;
                 isValid = false;
             }
@@ -222,6 +252,9 @@ export default {
         resetValidation(field) {
             this.validationErrors[field] = false;
         },
+        goToRestaurants() {
+            this.$router.push('/restaurants');
+        },
     },
 };
 </script>
@@ -229,6 +262,16 @@ export default {
 <style scoped>
 .container {
     margin-left: 20px;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
 }
 
 .invalid-feedback {
