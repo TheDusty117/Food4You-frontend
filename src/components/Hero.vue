@@ -18,7 +18,7 @@ import '@fontsource/modak';
     width: 100vw;
     img{
       width: 100vw;
-      border: 5px solid black;
+      
     }
   }
 
