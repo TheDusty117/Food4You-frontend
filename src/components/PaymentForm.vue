@@ -34,6 +34,58 @@
                         <div class="invalid-feedback">CVC non valido</div>
                     </div>
 
+                    <!-- Form inputs for shipping details -->
+                    <h5 class="card-title mt-4">Inserisci i dati per la spedizione</h5>
+
+                    <div class="form-group mt-2">
+                        <input type="text" class="form-control" v-model="shippingFullName" placeholder="Nome e Cognome"
+                            @focus="resetValidation('shippingFullName')"
+                            :class="{ 'is-invalid': validationErrors.shippingFullName }" required />
+                        <div class="invalid-feedback">Nome e cognome non validi</div>
+                    </div>
+
+                    <div class="form-group mt-2">
+                        <input type="text" class="form-control" v-model="shippingAddress" placeholder="Indirizzo"
+                            @focus="resetValidation('shippingAddress')"
+                            :class="{ 'is-invalid': validationErrors.shippingAddress }" required />
+                        <div class="invalid-feedback">Indirizzo non valido</div>
+                    </div>
+
+                    <div class="form-group mt-2">
+                        <input type="text" class="form-control" v-model="shippingStreetNumber" placeholder="Numero civico"
+                            @focus="resetValidation('shippingStreetNumber')"
+                            :class="{ 'is-invalid': validationErrors.shippingStreetNumber }" required />
+                        <div class="invalid-feedback">Numero civico non valido</div>
+                    </div>
+
+                    <div class="form-group mt-2">
+                        <input type="text" class="form-control" v-model="shippingCity" placeholder="Città"
+                            @focus="resetValidation('shippingCity')"
+                            :class="{ 'is-invalid': validationErrors.shippingCity }" required />
+                        <div class="invalid-feedback">Città non valida</div>
+                    </div>
+
+                    <div class="form-group mt-2">
+                        <input type="text" class="form-control" v-model="shippingProvince" placeholder="Provincia"
+                            @focus="resetValidation('shippingProvince')"
+                            :class="{ 'is-invalid': validationErrors.shippingProvince }" required />
+                        <div class="invalid-feedback">Provincia non valida</div>
+                    </div>
+
+                    <div class="form-group mt-2">
+                        <input type="text" class="form-control" v-model="shippingPostalCode" placeholder="CAP"
+                            @focus="resetValidation('shippingPostalCode')"
+                            :class="{ 'is-invalid': validationErrors.shippingPostalCode }" required />
+                        <div class="invalid-feedback">CAP non valido</div>
+                    </div>
+
+                    <div class="form-group mt-2">
+                        <input type="text" class="form-control" v-model="shippingPhoneNumber"
+                            placeholder="Numero di telefono" @focus="resetValidation('shippingPhoneNumber')"
+                            :class="{ 'is-invalid': validationErrors.shippingPhoneNumber }" required />
+                        <div class="invalid-feedback">Numero di telefono non valido</div>
+                    </div>
+
                     <!-- Submit button -->
                     <button type="submit" class="btn btn-primary mt-3">Paga Ora</button>
                 </form>
@@ -57,13 +109,27 @@ export default {
             cardName: '',
             cardExpiry: '',
             cardCVC: '',
+            shippingFullName: '',
+            shippingAddress: '',
+            shippingStreetNumber: '',
+            shippingCity: '',
+            shippingProvince: '',
+            shippingPostalCode: '',
+            shippingPhoneNumber: '',
             paymentStatus: '',
             validationErrors: {
                 cardNumber: false,
                 cardName: false,
                 cardExpiry: false,
-                cardCVC: false
-            }
+                cardCVC: false,
+                shippingFullName: false,
+                shippingAddress: false,
+                shippingStreetNumber: false,
+                shippingCity: false,
+                shippingProvince: false,
+                shippingPostalCode: false,
+                shippingPhoneNumber: false,
+            },
         };
     },
     methods: {
@@ -83,7 +149,14 @@ export default {
                 cardNumber: false,
                 cardName: false,
                 cardExpiry: false,
-                cardCVC: false
+                cardCVC: false,
+                shippingFullName: false,
+                shippingAddress: false,
+                shippingStreetNumber: false,
+                shippingCity: false,
+                shippingProvince: false,
+                shippingPostalCode: false,
+                shippingPhoneNumber: false,
             };
 
             if (this.cardNumber.length !== 16 || !/^\d+$/.test(this.cardNumber)) {
@@ -106,6 +179,41 @@ export default {
                 isValid = false;
             }
 
+            if (this.shippingFullName.length < 3) {
+                this.validationErrors.shippingFullName = true;
+                isValid = false;
+            }
+
+            if (this.shippingAddress.length < 3) {
+                this.validationErrors.shippingAddress = true;
+                isValid = false;
+            }
+
+            if (this.shippingStreetNumber.length === 0) {
+                this.validationErrors.shippingStreetNumber = true;
+                isValid = false;
+            }
+
+            if (this.shippingCity.length < 3) {
+                this.validationErrors.shippingCity = true;
+                isValid = false;
+            }
+
+            if (this.shippingProvince.length < 2) {
+                this.validationErrors.shippingProvince = true;
+                isValid = false;
+            }
+
+            if (this.shippingPostalCode.length !== 5 || !/^\d+$/.test(this.shippingPostalCode)) {
+                this.validationErrors.shippingPostalCode = true;
+                isValid = false;
+            }
+
+            if (this.shippingPhoneNumber.length < 7 || !/^\d+$/.test(this.shippingPhoneNumber)) {
+                this.validationErrors.shippingPhoneNumber = true;
+                isValid = false;
+            }
+
             return isValid;
         },
         goToOrderSummary() {
@@ -113,8 +221,8 @@ export default {
         },
         resetValidation(field) {
             this.validationErrors[field] = false;
-        }
-    }
+        },
+    },
 };
 </script>
   
