@@ -60,7 +60,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .container {
     max-width: 960px;
     margin: 0 auto;
@@ -84,6 +84,7 @@ export default {
 
 section{
     height: 100vh;
+    background-color: black;
 }
 
 button {

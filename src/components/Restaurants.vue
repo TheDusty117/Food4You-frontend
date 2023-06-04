@@ -1,57 +1,59 @@
 <template>
-
-  <section class="hero-section">
-    <!-- <Hero/> -->
-  </section>
-
-
-
-
   <div class="container cat-rest-container restaurants-list">
     <div class="row">
-      
-
       <div class="aside col-sm-2">
-        
         <div class="card-body container">
           <h5 class="card-title">Filtri</h5>
           <div class="row justify-content-evenly">
-
-            <div class="col-12 category-item" v-for="category in categoriesArr" :key="category.id">
-              <div class="form-check d-flex flex-column justify-content-start">
-                <img class="logo-categoria" src="../../public/img/italiano.png" alt="">
-                <input class="form-check-input" type="checkbox" @change="selectCategory(category)" :id="category.id" >
-                <label class="form-check-label mb-2" :for="category.id">{{ category.name }}</label>
+            <div
+              class="selected col-12 category-item"
+              v-for="category in categoriesArr"
+              :key="category.id"
+            >
+              <div
+                class="form-check d-flex flex-column justify-content-start"
+                :class="{ 'checked': selectedCategories.includes(category.id) }"
+              >
+                <label class="form-check-label mb-2" :for="category.id">
+                  <img
+                    class="logo-categoria"
+                    :src="category.category_img"
+                    alt=""
+                  />
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    @change="selectCategory(category)"
+                    :id="category.id"
+                  />
+                  {{ category.name }}
+                </label>
               </div>
             </div>
           </div>
         </div>
       </div>
-  
+
       <div class="content col-sm-10">
         <div class="row mt-3">
-          <div class="col-lg-6 p-0" v-for="restaurant in filteredRestaurants" :key="restaurant.id">
+          <div
+            class="col-lg-6 p-0"
+            v-for="restaurant in filteredRestaurants"
+            :key="restaurant.id"
+          >
             <RestaurantsCard :restaurant="restaurant" />
           </div>
         </div>
-  
       </div>
-
     </div>
-    
-
   </div>
-
-  
 </template>
 
-
 <script>
-import axios from 'axios'
+import axios from 'axios';
 
 import Hero from './Hero.vue';
-
-import RestaurantsCard from './RestaurantsCard.vue'
+import RestaurantsCard from './RestaurantsCard.vue';
 
 export default {
   components: {
@@ -62,99 +64,76 @@ export default {
     return {
       categoriesArr: [],
       restaurants: [],
-      selectedCategories: []
-    }
+      selectedCategories: [],
+    };
   },
   computed: {
     filteredRestaurants() {
       if (this.selectedCategories.length > 0) {
-        return this.restaurants.filter(restaurant => {
-        return this.selectedCategories.every(catId => {
-        return restaurant.categories.some(cat => cat.id === catId);
-      });
-    });
-  }
-  return this.restaurants;
-    }
+        return this.restaurants.filter((restaurant) => {
+          return this.selectedCategories.every((catId) => {
+            return restaurant.categories.some((cat) => cat.id === catId);
+          });
+        });
+      }
+      return this.restaurants;
+    },
   },
   methods: {
     selectCategory(cat) {
-      const isSelected = this.selectedCategories.includes(cat.id)
+      const isSelected = this.selectedCategories.includes(cat.id);
       if (isSelected) {
-        this.selectedCategories = this.selectedCategories.filter(category => category !== cat.id)
+        this.selectedCategories = this.selectedCategories.filter(
+          (category) => category !== cat.id
+        );
       } else {
-        this.selectedCategories.push(cat.id)
+        this.selectedCategories.push(cat.id);
       }
     },
     fetchCategories() {
-      axios.get(`http://127.0.0.1:8000/api/categories`)
-        .then(res => {
-          const { results } = res.data
-          this.categoriesArr = results
+      axios
+        .get('http://127.0.0.1:8000/api/categories')
+        .then((res) => {
+          const { results } = res.data;
+          this.categoriesArr = results;
         })
-        .catch(err => {
-          console.log(err)
-        })
+        .catch((err) => {
+          console.log(err);
+        });
     },
     fetchRestaurants() {
-      axios.get(`http://127.0.0.1:8000/api/restaurants/categories/${this.categoryid}`)
-        .then(res => {
-          const { results } = res.data
-          this.restaurants = results.data
+      axios
+        .get(
+          `http://127.0.0.1:8000/api/restaurants/categories/${this.categoryid}`
+        )
+        .then((res) => {
+          const { results } = res.data;
+          this.restaurants = results.data;
         })
-        .catch(err => {
-          console.log(err)
-        })
+        .catch((err) => {
+          console.log(err);
+        });
     },
     fetchAllRestaurants() {
-      axios.get(`http://127.0.0.1:8000/api/restaurants`)
-        .then(res => {
-          const { results } = res.data
-          this.restaurants = results.data
+      axios
+        .get('http://127.0.0.1:8000/api/restaurants')
+        .then((res) => {
+          const { results } = res.data;
+          this.restaurants = results.data;
         })
-        .catch(err => {
-          console.log(err)
-        })
+        .catch((err) => {
+          console.log(err);
+        });
     },
   },
   mounted() {
-    this.fetchAllRestaurants()
-    this.fetchCategories()
+    this.fetchAllRestaurants();
+    this.fetchCategories();
   },
-}
+};
 </script>
 
 <style lang="scss" scoped>
-
-
-.aside{
-  background-color: #44B925;
-  min-height: 900px;
-}
-
-.content{
-  background-color: whitesmoke;
-  min-height: 900px;
-}
-
-.category-item{
-  font-family: 'Baloo Bhaijaan 2 Variable', sans-serif;
-  text-transform: uppercase;
-}
-
-//qui gestisci sia cat che restaurants
-.cat-rest-container{
-  color: black;
-}
-
-.active{
-  color: #F7A42C;
-}
-
-.inactive{
-  color: gray;
-}
-
 /* Stili per la checkbox */
 .form-check-input {
   width: 20px;
@@ -164,51 +143,32 @@ export default {
   display: none;
 }
 
-.form-check-input:checked {
-  background-color: #007bff;
-  border-color: #007bff;
+.form-check-input:checked + .form-check-label {
+  color: red;
+}
+
+.form-check-input:checked + .form-check-label .logo-categoria {
+  background-color: red;
+  border-color: red;
+}
+
+.checked .form-check-label .logo-categoria {
+  background-color: red;
+  border-color: red;
 }
 
 /* Stili per il testo delle categorie */
 .form-check-label {
   font-weight: bold;
 }
-.logo-categoria{
+
+.logo-categoria {
   width: 50px;
+  transition: background-color 0.3s, border-color 0.3s;
 }
 
-/* Stili per la card */
+/* Altri stili */
 
-.card-title{
-    text-transform: uppercase;
-    text-align: center;
-    font-family: 'Fredoka One', sans-serif;
-    color: #F7A42C;
-    font-size: 40px;
-    -webkit-text-stroke-width: 2px;
-    -webkit-text-stroke-color: black;
-  }
-.card {
-  // background-image: url(../../public/img/black-n-white-bg-filters.png);
-  background-color: #F7A42C;
-  background-size: cover;
-  // height: 00px;
-  border: none;
-  border-radius: 0.5rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  width: 100vw;
-  
-  .form-check{
-    font-family: 'Fredoka One', sans-serif;
-    color: black;
-    font-size: 24px;
-    background-color: white;
-    border-radius: 999px;
-    cursor: pointer;
-    opacity: 0;
-    position: absolute;
-  }
-}
-
+// ...
 
 </style>

@@ -54,7 +54,7 @@
     }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 section{
     background-image: url('../../public/img/black-n-white-bg-filters.png');
     background-size: cover;
