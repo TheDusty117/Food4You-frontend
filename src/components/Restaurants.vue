@@ -9,6 +9,7 @@
 
   <div class="container cat-rest-container restaurants-list">
     <div class="row">
+      
 
       <div class="aside col-sm-2">
         

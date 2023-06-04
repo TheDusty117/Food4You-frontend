@@ -29,9 +29,9 @@ export default {
 
 #app{
   background-color: white;
-  background-image: url(../public/img/rotate-image-bnw.png);
+  /* background-image: url(../public/img/rotate-image-bnw.png);
   background-position: center;
-  background-size: contain;
+  background-size: contain; */
 }
 
 

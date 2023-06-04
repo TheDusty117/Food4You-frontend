@@ -13,7 +13,7 @@
         </router-link>
       </div>
       
-      <ul class="nav__menu">
+      <ul class="nav__menu mb-0">
         <li>
             <router-link style="text-decoration: none; color: inherit;" :to="{ name: 'home' }">
               <span class="nav-element">
