@@ -1,21 +1,25 @@
 <template>
-  <div class="card-deck">
-    <div class="card">
-      <div class="card-body">
+  <div class="container">
+
+    <div class="card-custom">
+
+      
+      <router-link style="text-decoration: none; color: black;" :to="{ name: 'restaurants.show', params: { slug: restaurant.slug } }">
+        
+        <!-- immagine ristorante -->
+        <img class="restaurant-logo img-fluid" :src="restaurant.img_restaurant" alt="">
+        <!-- categorie del ristorante singolo -->
+        <h4 class="card-subtitle mb-3"></h4>
         <h3 class="card-title">{{ restaurant.name }}</h3>
         <p class="card-text">{{ restaurant.address }}</p>
-
-        <h4 class="card-subtitle mb-3">Categoria</h4>
-        <ul v-if="restaurant.categories && restaurant.categories.length > 0" class="list-unstyled">
-          <li v-for="cat in restaurant.categories" :key="cat.id" class="mb-2">{{ cat.name }}
-          </li>
-          <img :src="restaurant.img_restaurant" alt="">
+        <ul v-if="restaurant.categories && restaurant.categories.length > 0" class="individual-restaurant list-unstyled d-flex gap-3">
+          <li v-for="cat in restaurant.categories" :key="cat.id" class="mb-2">{{ cat.name }}</li>
         </ul>
+      
+      </router-link>
 
-        <router-link :to="{ name: 'restaurants.show', params: { slug: restaurant.slug } }"
-          class="btn btn-primary">Apri</router-link>
-      </div>
     </div>
+
   </div>
 </template>
 
@@ -35,13 +39,26 @@ export default {
 </script>
   
 <style lang="scss" scoped>
-.card {
-  width: 18rem;
+.card-custom {
   margin-bottom: 1rem;
+  background-color: whitesmoke;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  
+}
+
+.restaurant-logo{
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.individual-restaurant{
+  font-family: 'Baloo Bhaijaan 2 Variable', sans-serif;
+  text-transform: uppercase;
 }
 
 .card-title {
-  font-size: 1.5rem;
+  font-family: 'Fredoka One', sans-serif;
+  font-size: 2rem;
   font-weight: bold;
 }
 

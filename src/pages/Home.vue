@@ -3,6 +3,7 @@
 
     
     <DefaultLayout>
+
         
         <Hero/>
 
@@ -34,6 +35,7 @@
                 
                 
             </div>
+
         </div>
         
         

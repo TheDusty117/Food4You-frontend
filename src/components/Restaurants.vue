@@ -1,33 +1,48 @@
 <template>
 
   <section class="hero-section">
-    <Hero/>
+    <!-- <Hero/> -->
   </section>
 
 
 
 
-  <div class="restaurants-list">
-    <div class="card">
-      <div class="card-body container">
-        <h5 class="card-title">Oggi ho voglia di...</h5>
-        <div class="row">
-          <div class="col-2 category-item" v-for="category in categoriesArr" :key="category.id">
-            <div class="form-check d-flex justify-content-center">
-              <input class="form-check-input" type="checkbox" @change="selectCategory(category)" :id="category.id">
-              <label class="form-check-label mb-2" :for="category.id">{{ category.name }}</label>
+  <div class="container cat-rest-container restaurants-list">
+    <div class="row">
+      
+
+      <div class="aside col-sm-2">
+        
+        <div class="card-body container">
+          <h5 class="card-title">Filtri</h5>
+          <div class="row justify-content-evenly">
+
+            <div class="col-12 category-item" v-for="category in categoriesArr" :key="category.id">
+              <div class="form-check d-flex flex-column justify-content-start">
+                <img class="logo-categoria" src="../../public/img/italiano.png" alt="">
+                <input class="form-check-input" type="checkbox" @change="selectCategory(category)" :id="category.id" >
+                <label class="form-check-label mb-2" :for="category.id">{{ category.name }}</label>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-
-    <div class="row mt-3">
-      <div class="col" v-for="restaurant in filteredRestaurants" :key="restaurant.id">
-        <RestaurantsCard :restaurant="restaurant" />
+  
+      <div class="content col-sm-10">
+        <div class="row mt-3">
+          <div class="col-lg-6 p-0" v-for="restaurant in filteredRestaurants" :key="restaurant.id">
+            <RestaurantsCard :restaurant="restaurant" />
+          </div>
+        </div>
+  
       </div>
+
     </div>
+    
+
   </div>
+
+  
 </template>
 
 
@@ -112,11 +127,32 @@ export default {
 <style lang="scss" scoped>
 
 
-
-.hero-section{
-  padding-bottom: 10px;
+.aside{
   background-color: #44B925;
-  border-bottom: 5px solid black;
+  min-height: 900px;
+}
+
+.content{
+  background-color: whitesmoke;
+  min-height: 900px;
+}
+
+.category-item{
+  font-family: 'Baloo Bhaijaan 2 Variable', sans-serif;
+  text-transform: uppercase;
+}
+
+//qui gestisci sia cat che restaurants
+.cat-rest-container{
+  color: black;
+}
+
+.active{
+  color: #F7A42C;
+}
+
+.inactive{
+  color: gray;
 }
 
 /* Stili per la checkbox */
@@ -124,6 +160,8 @@ export default {
   width: 20px;
   height: 20px;
   margin-right: 10px;
+  //nascondi quadratino
+  display: none;
 }
 
 .form-check-input:checked {
@@ -135,8 +173,21 @@ export default {
 .form-check-label {
   font-weight: bold;
 }
+.logo-categoria{
+  width: 50px;
+}
 
 /* Stili per la card */
+
+.card-title{
+    text-transform: uppercase;
+    text-align: center;
+    font-family: 'Fredoka One', sans-serif;
+    color: #F7A42C;
+    font-size: 40px;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: black;
+  }
 .card {
   // background-image: url(../../public/img/black-n-white-bg-filters.png);
   background-color: #F7A42C;
@@ -146,29 +197,18 @@ export default {
   border-radius: 0.5rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   width: 100vw;
-  .card-title{
-    text-transform: uppercase;
-    text-align: center;
-    font-family: 'Modak', sans-serif;
-    color: #F7A42C;
-    font-size: 80px;
-    -webkit-text-stroke-width: 2px;
-    -webkit-text-stroke-color: black;
-  }
+  
   .form-check{
     font-family: 'Fredoka One', sans-serif;
     color: black;
     font-size: 24px;
     background-color: white;
     border-radius: 999px;
+    cursor: pointer;
+    opacity: 0;
+    position: absolute;
   }
 }
 
-.category-item{
-  
-}
 
-.card-body {
-  padding: 1rem;
-}
 </style>
