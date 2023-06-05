@@ -3,8 +3,13 @@
 
     <div class="container p-4">
       <!-- carrello -->
-      <button type="button" class="mb-3 btn btn-primary position-relative">
-        <router-link class="text-decoration-none text-uppercase text-white" :to="{ name: 'cart' }"> Cart
+      <button type="button" class="mb-3 btn-cart btn btn-primary position-relative">
+        <router-link class="text-decoration-none text-uppercase text-white" :to="{ name: 'cart' }"> <svg
+            xmlns="http://www.w3.org/2000/svg" height="1em"
+            viewBox="0 0 576 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+            <path
+              d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z" />
+          </svg>
         </router-link>
         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
           {{ totalQuantity }}
@@ -12,19 +17,52 @@
         </span>
       </button>
 
-      <div class="restaurant-card ">
-        <ul class="list-unstyled mb-4">
-          <h1 class="mb-4 text-center">{{ restaurant.name }}</h1>
-          <h3>Contatti</h3>
-          <li class="mb-2">
-            <FontAwesomeIcon icon="fa-solid fa-location-pin" />{{ restaurant.address }}
-          </li>
-          <li class="mb-2">{{ restaurant.email }}</li>
-          <li class="mb-2">{{ restaurant.telephone_number }}</li>
-          <li class="mb-2">{{ restaurant.vat }}</li>
+      <div class="container py-4">
 
-        </ul>
-        <figure class="image-card col col-lg-6"><img :src="restaurant.img_restaurant" alt=""></figure>
+        <div class="restaurant-card ">
+          <ul class="d-none d-md-block list-unstyled m-0">
+            <h1 class="mb-4 text-center">{{ restaurant.name }}</h1>
+            <h3>Contatti</h3>
+            <li class="mb-2">
+              <span class="badge-contact">
+
+                <svg xmlns="http://www.w3.org/2000/svg" height="1em"
+                  viewBox="0 0 384 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                  <path
+                    d="M384 192c0 87.4-117 243-168.3 307.2c-12.3 15.3-35.1 15.3-47.4 0C117 435 0 279.4 0 192C0 86 86 0 192 0S384 86 384 192z" />
+                </svg>
+              </span>
+              {{ restaurant.address }}
+            </li>
+            <li class="mb-2">
+              <span class="badge-contact">
+
+                <svg xmlns="http://www.w3.org/2000/svg" height="1em"
+                  viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                  <path
+                    d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z" />
+                </svg>
+              </span>
+              {{ restaurant.email }}
+            </li>
+            <li class="mb-2">
+              <span class="badge-contact">
+                <svg xmlns="http://www.w3.org/2000/svg" height="1em"
+                  viewBox="0 0 384 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                  <path
+                    d="M16 64C16 28.7 44.7 0 80 0H304c35.3 0 64 28.7 64 64V448c0 35.3-28.7 64-64 64H80c-35.3 0-64-28.7-64-64V64zM224 448a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zM304 64H80V384H304V64z" />
+                </svg>
+              </span>
+              {{ restaurant.telephone_number }}
+            </li>
+            <!-- <li class="mb-2">
+
+              {{ restaurant.vat }}
+            </li> -->
+
+          </ul>
+          <figure class="image-card col col-lg-6"><img :src="restaurant.img_restaurant" alt=""></figure>
+        </div>
       </div>
 
       <!-- <ul class="list-unstyled mb-4">
@@ -41,12 +79,11 @@
       <div class="container-menu p-4">
 
         <ul class="grid-menu">
-          <li v-for="food in restaurant.food" :key="food.id"
-            class="my-3 mx-5 mx-sm-0 col col-md-6 col-lg-6 col-xl-6 card-food">
+          <li v-for="food in restaurant.food" :key="food.id" class="my-3 col col-md-6 col-lg-6 col-xl-6 card-food">
             <div class="food-image">
               <img :src="food.image" alt="">
               <div class="offcanvas-price">
-                <p class="food-item-price">${{ food.price }}</p>
+                <p class="food-item-price">€{{ food.price }}</p>
                 <button @click="AddFoodToCart(food)" class="add-food btn btn-success">
                   ADD TO CART
                 </button>
@@ -163,7 +200,6 @@ export default {
 
 .food-image {
   position: relative;
-  z-index: -5;
 
   img {
     border-top-right-radius: 10px;
@@ -172,10 +208,16 @@ export default {
   }
 }
 
+.btn-cart {
+  background-color: #44B925;
+  border: 0;
+  font-size: 18px;
+}
+
 .grid-menu {
   display: flex;
   flex-wrap: wrap;
-  gap: 50px;
+  gap: 35px;
 }
 
 h1 {
@@ -204,9 +246,10 @@ ul {
 
 .restaurant-card {
   display: flex;
-  border: 1px solid #ddd;
   border-radius: 8px;
   background-color: #f7f7f7;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
 
 
   // background-image: url("/images/NONNO.png");
@@ -214,7 +257,17 @@ ul {
   // background-size: contain;
   .list-unstyled {
     padding: 1rem;
-    flex-basis: 0;
+
+    li {
+      padding: 8px;
+
+      &:hover {
+        background-color: #b1eca0;
+        transition: linear 0.5s;
+        border-radius: 8px;
+        // transform: scale(1.1, 1.1);
+      }
+    }
 
     h1 {
 
@@ -225,10 +278,29 @@ ul {
   }
 }
 
+.badge-contact {
+  background-color: #44B925;
+  padding: 0px 7px 5px;
+  border-radius: 50px;
+
+  &:hover {}
+
+  svg {
+    aspect-ratio: 2/3;
+  }
+}
+
 .card-food {
   flex-basis: 46%;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
+  &:hover {
+    background-color: #44B925;
+    transform: scale(1.1, 1.1);
+    transition: transform ease-in-out 0.5s;
+    // transform: scale(1.1, 1.1);
+  }
 
   &:hover .offcanvas-price {
     width: 100%;
@@ -297,7 +369,6 @@ ul {
 .food-item {
   min-height: 45%;
   padding: 0.8rem;
-  background-color: #f7f7f7;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
 
@@ -305,6 +376,7 @@ ul {
 
 .food-item-name {
   color: #333;
+  font-weight: 800;
 }
 
 .food-item-price {
