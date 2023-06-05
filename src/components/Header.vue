@@ -15,7 +15,7 @@
 
       </div>     
 
-      <ul class="nav__menu" :class="{ 'nav__menu--open': isMenuOpen }">
+      <ul class="nav__menu mb-0" :class="{ 'nav__menu--open': isMenuOpen }">
         <li>
         <router-link style="text-decoration: none; color: inherit;" :to="{ name: 'home' }">
 
@@ -71,7 +71,10 @@ export default {
 
 <style lang="scss" scoped>
 
+span{
+  text-shadow: rgb(0, 0, 0) 2px 5px 10px;
 
+}
 .main-logo {
   width: 90px;
 }
@@ -131,6 +134,8 @@ header {
   header {
 
 
+
+
     .mobile{
       display: none;
     }
@@ -160,6 +165,7 @@ header {
       
       li {
         margin-bottom: 1rem;
+        
       }
 
       .nav__item{
