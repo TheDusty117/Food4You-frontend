@@ -162,7 +162,10 @@ export default {
 }
 
 .food-image {
+
   img {
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
     width: 100%;
   }
 }
@@ -170,7 +173,7 @@ export default {
 .grid-menu {
   display: flex;
   flex-wrap: wrap;
-  gap: 8%;
+  gap: 50px;
 }
 
 h1 {
@@ -221,7 +224,6 @@ ul {
 }
 
 .card-food {
-  position: relative;
   flex-basis: 46%;
 
   &:hover .offcanvas-price {
@@ -289,13 +291,11 @@ ul {
 
 
 .food-item {
-  display: flex;
-  //  align-items: center;
-  // border: 1px solid #ddd;
+  min-height: 45%;
   padding: 0.8rem;
-  // border-radius: 4px;
   background-color: #f7f7f7;
-  flex-wrap: wrap;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 
 }
 
