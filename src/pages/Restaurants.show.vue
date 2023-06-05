@@ -320,7 +320,7 @@ ul {
   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 
   &:hover {
-    background-color: #44B925;
+    background-color: hwb(107 15% 27%);
     transform: scale(1.1, 1.1);
     transition: transform ease-in-out 0.5s;
 
@@ -358,6 +358,7 @@ ul {
     transition-timing-function: linear;
     opacity: 1;
     position: absolute;
+    background-color: rgb(255, 255, 255, 0.7);
 
     p {
       margin: 0;
@@ -368,6 +369,7 @@ ul {
 .offcanvas-price {
   opacity: 0;
   position: absolute;
+
 }
 
 .category-card {
