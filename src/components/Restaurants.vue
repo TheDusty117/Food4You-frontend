@@ -151,6 +151,7 @@ export default {
 
 .aside{
   position: fixed;
+  margin-top: 15px;
 }
 .content{
   margin-left: 180px;
