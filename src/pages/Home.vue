@@ -2,11 +2,13 @@
     
     
     <DefaultLayout>
+
         
         
         <Hero/>
         
         <section>
+
         
             <div class="container text-center">
             <div class="row justify-content-around">
