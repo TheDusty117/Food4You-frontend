@@ -78,6 +78,7 @@
         </div>
       </div>
 
+
       <!-- <ul class="list-unstyled mb-4">
         <div class="category-card">
           <div class="title-type">
@@ -280,14 +281,15 @@ ul {
     padding: 1rem;
 
     li {
-      padding: 8px;
+      padding: 10px;
 
       &:hover {
         background-color: #b1eca0;
         transition: linear 0.2s;
         border-radius: 8px;
         font-weight: 600;
-        color: rgb(143, 143, 143);
+        color: white;
+        text-shadow: rgb(0, 0, 0) 1px 0 10px;
         // transform: scale(1.1, 1.1);
       }
     }
@@ -321,7 +323,27 @@ ul {
     background-color: #44B925;
     transform: scale(1.1, 1.1);
     transition: transform ease-in-out 0.5s;
+
     // transform: scale(1.1, 1.1);
+    h4 {
+      color: white;
+      text-shadow: rgb(0, 0, 0) 1px 0 10px;
+    }
+
+    h3 {
+      color: white;
+      text-shadow: rgb(0, 0, 0) 1px 0 10px;
+    }
+
+    p {
+      color: white;
+      text-shadow: rgb(0, 0, 0) 1px 0 10px;
+    }
+
+    ul {
+      color: white;
+      text-shadow: rgb(0, 0, 0) 1px 0 10px;
+    }
   }
 
   &:hover .offcanvas-price {
