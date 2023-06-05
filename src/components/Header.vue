@@ -19,7 +19,7 @@
         <li>
         <router-link style="text-decoration: none; color: inherit;" :to="{ name: 'home' }">
 
-            <span id="shadow" class="nav-element">
+            <span class="nav-element">
               Home
             </span>
           </router-link>
@@ -71,7 +71,10 @@ export default {
 
 <style lang="scss" scoped>
 
+span{
+  text-shadow: rgb(0, 0, 0) 2px 5px 10px;
 
+}
 .main-logo {
   width: 90px;
 }
@@ -112,9 +115,7 @@ header {
 
 }
 
-span{
-  
-}
+
 
 .nav__menu {
   margin-left: auto;
