@@ -35,7 +35,7 @@
                     d="M384 192c0 87.4-117 243-168.3 307.2c-12.3 15.3-35.1 15.3-47.4 0C117 435 0 279.4 0 192C0 86 86 0 192 0S384 86 384 192z" />
                 </svg>
               </span>
-              <div class="d-none d-md-block ms-2">
+              <div class="d-none d-md-block ms-2 restaurant-contacts">
 
                 {{ restaurant.address }}
               </div>
@@ -49,7 +49,7 @@
                     d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z" />
                 </svg>
               </span>
-              <div class="d-none d-md-block ms-2">
+              <div class="d-none d-md-block ms-2 restaurant-contacts">
 
                 {{ restaurant.email }}
               </div>
@@ -62,7 +62,7 @@
                     d="M16 64C16 28.7 44.7 0 80 0H304c35.3 0 64 28.7 64 64V448c0 35.3-28.7 64-64 64H80c-35.3 0-64-28.7-64-64V64zM224 448a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zM304 64H80V384H304V64z" />
                 </svg>
               </span>
-              <div class="d-none d-md-block ms-2">
+              <div class="d-none d-md-block ms-2 restaurant-contacts">
                 {{ restaurant.telephone_number }}
               </div>
             </li>
@@ -97,9 +97,9 @@
             <div class="food-image">
               <img :src="food.image" alt="">
               <div class="offcanvas-price">
-                <p class="food-item-price">€{{ food.price }}</p>
+                <p class="text-black food-item-price">€{{ food.price }}</p>
                 <button @click="AddFoodToCart(food)" class="add-food btn btn-success">
-                  ADD TO CART
+                  AGGIUNGI
                 </button>
               </div>
             </div>
@@ -200,6 +200,18 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.restaurant-contacts{
+  font-family: 'Baloo Bhaijaan 2 Variable', sans-serif;
+
+}
+.grid-menu{
+  h4{
+    font-family: 'Fredoka One','sans-serif';
+  }
+  p{
+    font-family: 'Baloo Bhaijaan 2 Variable', sans-serif;
+  }
+}
 .container-menu {
 
   max-width: 900px;
@@ -271,7 +283,9 @@ ul {
   border-radius: 8px;
   background-color: #f7f7f7;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-
+  h3{
+    font-family: 'Fredoka One','sans-serif';
+  }
 
 
   // background-image: url("/images/NONNO.png");

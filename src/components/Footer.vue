@@ -2,7 +2,7 @@
   <footer class="footer">
     <div class="container mt-3">
       <div class="row footer links">
-        <div class="col-3">
+        <div class="col-md-3">
           <div class="footer-column">
           <h3>Scopri Food4You</h3>
           <ul>
@@ -13,7 +13,7 @@
           </ul>
         </div>
         </div>
-        <div class="col-3">
+        <div class="col-md-3">
           <div class="footer-column">
           <h3>Pressroom</h3>
           <ul>
@@ -24,7 +24,7 @@
           </ul>
         </div>
         </div>
-        <div class="col-3">
+        <div class="col-md-3">
           <div class="footer-column">
           <h3>Aiuto</h3>
           <ul>
@@ -34,7 +34,7 @@
           </ul>
         </div>
         </div>
-        <div class="col-3">
+        <div class="col-md-3">
           <div class="footer-column">
           <h3>Note legali</h3>
           <ul>
@@ -153,7 +153,7 @@ export default {
 
 }
 
-.col-3{
+.col-md-3{
   h3{
     font-family: 'Fredoka One','sans-serif';
   }
