@@ -95,7 +95,6 @@ header {
     color: white;
     text-shadow: rgb(0, 0, 0) 2px 5px 10px;
 
-    .main-logo {}
   }
 
   router-link {

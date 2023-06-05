@@ -3,27 +3,30 @@
 
     <div class="container p-4">
       <!-- carrello -->
-      <button type="button" class="mb-3 btn-cart btn btn-primary position-relative">
-        <router-link class="text-decoration-none text-uppercase text-white" :to="{ name: 'cart' }"> <svg
-            xmlns="http://www.w3.org/2000/svg" height="1em"
-            viewBox="0 0 576 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-            <path
-              d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z" />
-          </svg>
-        </router-link>
-        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-          {{ totalQuantity }}
-          <span class="visually-hidden">unread messages</span>
-        </span>
-      </button>
+
 
       <div class="container py-4">
 
         <div class="restaurant-card ">
-          <ul class="d-none d-md-block list-unstyled m-0">
-            <h1 class="mb-4 text-center">{{ restaurant.name }}</h1>
-            <h3>Contatti</h3>
-            <li class="mb-2">
+          <ul class=" list-unstyled m-0">
+            <div class="d-flex align-items-start justify-content-between mb-4">
+              <button type="button" class=" btn-cart btn btn-success position-relative">
+                <router-link class="text-decoration-none text-uppercase text-white" :to="{ name: 'cart' }"> <svg
+                    xmlns="http://www.w3.org/2000/svg" height="1em"
+                    viewBox="0 0 576 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                    <path
+                      d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z" />
+                  </svg>
+                </router-link>
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                  {{ totalQuantity }}
+                  <span class="visually-hidden">unread messages</span>
+                </span>
+              </button>
+              <h1 class="text-center d-none d-md-block">{{ restaurant.name }}</h1>
+            </div>
+            <h3 class="d-none d-md-block">Contatti</h3>
+            <li class="d-flex align-items-center  mb-2">
               <span class="badge-contact">
 
                 <svg xmlns="http://www.w3.org/2000/svg" height="1em"
@@ -32,9 +35,12 @@
                     d="M384 192c0 87.4-117 243-168.3 307.2c-12.3 15.3-35.1 15.3-47.4 0C117 435 0 279.4 0 192C0 86 86 0 192 0S384 86 384 192z" />
                 </svg>
               </span>
-              {{ restaurant.address }}
+              <div class="d-none d-md-block ms-2">
+
+                {{ restaurant.address }}
+              </div>
             </li>
-            <li class="mb-2">
+            <li class="d-flex align-items-center  mb-2">
               <span class="badge-contact">
 
                 <svg xmlns="http://www.w3.org/2000/svg" height="1em"
@@ -43,9 +49,12 @@
                     d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z" />
                 </svg>
               </span>
-              {{ restaurant.email }}
+              <div class="d-none d-md-block ms-2">
+
+                {{ restaurant.email }}
+              </div>
             </li>
-            <li class="mb-2">
+            <li class="d-flex align-items-center  mb-2">
               <span class="badge-contact">
                 <svg xmlns="http://www.w3.org/2000/svg" height="1em"
                   viewBox="0 0 384 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
@@ -53,7 +62,10 @@
                     d="M16 64C16 28.7 44.7 0 80 0H304c35.3 0 64 28.7 64 64V448c0 35.3-28.7 64-64 64H80c-35.3 0-64-28.7-64-64V64zM224 448a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zM304 64H80V384H304V64z" />
                 </svg>
               </span>
-              {{ restaurant.telephone_number }}
+              <div class="d-none d-md-block ms-2">
+
+                {{ restaurant.telephone_number }}
+              </div>
             </li>
             <!-- <li class="mb-2">
 
@@ -61,7 +73,9 @@
             </li> -->
 
           </ul>
-          <figure class="image-card col col-lg-6"><img :src="restaurant.img_restaurant" alt=""></figure>
+          <figure class="image-card col col-lg-6">
+            <img :src="restaurant.img_restaurant" alt="">
+          </figure>
         </div>
       </div>
 
@@ -212,6 +226,14 @@ export default {
   background-color: #44B925;
   border: 0;
   font-size: 18px;
+
+  &:hover {
+    background-color: #44B925;
+    transition: linear 0.1s;
+    transform: scale(1.1, 1.1);
+  }
+
+
 }
 
 .grid-menu {
@@ -263,7 +285,7 @@ ul {
 
       &:hover {
         background-color: #b1eca0;
-        transition: linear 0.5s;
+        transition: linear 0.2s;
         border-radius: 8px;
         // transform: scale(1.1, 1.1);
       }
@@ -282,8 +304,6 @@ ul {
   background-color: #44B925;
   padding: 0px 7px 5px;
   border-radius: 50px;
-
-  &:hover {}
 
   svg {
     aspect-ratio: 2/3;
@@ -355,7 +375,8 @@ ul {
 
   img {
     width: 100%;
-    border-radius: 8px;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
     aspect-ratio: 12/5;
     object-position: center;
     object-fit: cover;
