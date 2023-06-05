@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="">
         <div class="card mt-4 mx-auto mb-5" style="max-width: 500px;">
             <div class="card-body">
                 <h5 class="card-title">Inserisci i dati di pagamento</h5>
@@ -260,6 +260,11 @@ export default {
 </script>
   
 <style scoped>
+.card {
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
 .container {
     margin-left: 20px;
 }
