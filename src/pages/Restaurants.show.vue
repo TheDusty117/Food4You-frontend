@@ -23,7 +23,7 @@
                   <span class="visually-hidden">unread messages</span>
                 </span>
               </button>
-              <h1 class="text-center d-none d-md-block">{{ restaurant.name }}</h1>
+              <h1 class="ms-3 text-center d-none d-md-block">{{ restaurant.name }}</h1>
             </div>
             <h3 class="d-none d-md-block">Contatti</h3>
             <li class="d-flex align-items-center  mb-2">
@@ -63,7 +63,6 @@
                 </svg>
               </span>
               <div class="d-none d-md-block ms-2">
-
                 {{ restaurant.telephone_number }}
               </div>
             </li>
@@ -287,6 +286,8 @@ ul {
         background-color: #b1eca0;
         transition: linear 0.2s;
         border-radius: 8px;
+        font-weight: 600;
+        color: rgb(143, 143, 143);
         // transform: scale(1.1, 1.1);
       }
     }
@@ -304,6 +305,7 @@ ul {
   background-color: #44B925;
   padding: 0px 7px 5px;
   border-radius: 50px;
+  line-height: 20px;
 
   svg {
     aspect-ratio: 2/3;
