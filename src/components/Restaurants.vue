@@ -1,7 +1,9 @@
 <template>
   <div class="container cat-rest-container restaurants-list">
     <div class="row">
-      <div class="aside col-sm-2">
+
+      <!-- ASIDE -->
+      <div class="aside col-2">
         <div class="card-body container">
           <!-- <h2 class="card-title text-center">Filtri</h2> -->
           <div class="row justify-content-evenly">
@@ -43,7 +45,9 @@
         </div>
       </div>
 
-      <div class="content col-sm-10">
+
+      <!-- CONTENT -->
+      <div class="content col-10">
         <div class="row mt-3">
           <div
             class="col-lg-6 p-0"
@@ -145,7 +149,6 @@ export default {
 <style lang="scss" scoped>
 /* Stili per la checkbox */
 
-
 .form-check{
   padding-left: 0px;
   padding-right: 50px;
@@ -174,6 +177,7 @@ export default {
   flex-direction: column;
   text-align: center;
   transition: transform .2s; /* Animation */
+  cursor: pointer;
 }
 .category-name:hover{
   background-color: #45b92563;
@@ -202,6 +206,12 @@ export default {
     span{
       display: none;
     }
+  }
+}
+
+@media screen and (max-width: 570px) {
+  .aside{
+    
   }
 }
 

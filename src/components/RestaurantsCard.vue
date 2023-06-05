@@ -1,5 +1,6 @@
 <template>
-  <div class="container">
+
+  <div class="container p-4">
 
     <div class="card-custom">
 
@@ -47,11 +48,44 @@ export default {
   h4, h3, p, ul{
     padding: 0px 20px 0px 20px;
   }
+  transition: transform .2s; /* Animation */
+
+}
+.card-custom:hover{
+  background-color: #44B925;
+  transform: scale(1.1); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+h4{
+  color: white;
+  text-shadow: rgb(0, 0, 0) 1px 0 10px;
+}
+h3{
+  color: white;
+  text-shadow: rgb(0, 0, 0) 1px 0 10px;
+}
+p{
+  color: white;
+  text-shadow: rgb(0, 0, 0) 1px 0 10px;
+}
+ul{
+  color: white;
+  text-shadow: rgb(0, 0, 0) 1px 0 10px;
+}
 }
 
 .restaurant-logo{
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
+  // filter: grayscale(80%);
+}
+.card-custom .restaurant-logo{
+  filter: brightness(80%);
+
+}
+.card-custom:hover{
+  .restaurant-logo{
+
+    filter: grayscale(0%);
+  }
 }
 .individual-restaurant{
   font-family: 'Baloo Bhaijaan 2 Variable', sans-serif;
