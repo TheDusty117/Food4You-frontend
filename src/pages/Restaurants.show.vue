@@ -78,6 +78,7 @@
         </div>
       </div>
 
+
       <!-- <ul class="list-unstyled mb-4">
         <div class="category-card">
           <div class="title-type">
@@ -280,14 +281,15 @@ ul {
     padding: 1rem;
 
     li {
-      padding: 8px;
+      padding: 10px;
 
       &:hover {
         background-color: #b1eca0;
         transition: linear 0.2s;
         border-radius: 8px;
         font-weight: 600;
-        color: rgb(143, 143, 143);
+        color: white;
+        text-shadow: rgb(0, 0, 0) 1px 0 10px;
         // transform: scale(1.1, 1.1);
       }
     }
@@ -318,10 +320,30 @@ ul {
   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 
   &:hover {
-    background-color: #44B925;
+    background-color: hwb(107 15% 27%);
     transform: scale(1.1, 1.1);
     transition: transform ease-in-out 0.5s;
+
     // transform: scale(1.1, 1.1);
+    h4 {
+      color: white;
+      text-shadow: rgb(0, 0, 0) 1px 0 10px;
+    }
+
+    h3 {
+      color: white;
+      text-shadow: rgb(0, 0, 0) 1px 0 10px;
+    }
+
+    p {
+      color: white;
+      text-shadow: rgb(0, 0, 0) 1px 0 10px;
+    }
+
+    ul {
+      color: white;
+      text-shadow: rgb(0, 0, 0) 1px 0 10px;
+    }
   }
 
   &:hover .offcanvas-price {
@@ -336,6 +358,7 @@ ul {
     transition-timing-function: linear;
     opacity: 1;
     position: absolute;
+    background-color: rgb(255, 255, 255, 0.7);
 
     p {
       margin: 0;
@@ -346,6 +369,7 @@ ul {
 .offcanvas-price {
   opacity: 0;
   position: absolute;
+
 }
 
 .category-card {
