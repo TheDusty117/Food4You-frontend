@@ -90,6 +90,7 @@ ul{
 .individual-restaurant{
   font-family: 'Baloo Bhaijaan 2 Variable', sans-serif;
   text-transform: uppercase;
+  flex-wrap: wrap;
 }
 
 .card-title {

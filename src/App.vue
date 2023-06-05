@@ -16,9 +16,9 @@ export default {
 </script>
 
 <template>
-  <Header></Header>
+  <!-- <Header></Header> -->
   <router-view></router-view>
-  <Footer></Footer>
+  <!-- <Footer></Footer> -->
 </template>
 
 <style >
