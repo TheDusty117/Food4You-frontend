@@ -1,7 +1,7 @@
 <template>
     <section>
        <div class="container text-center">
-           <div class="row justify-content-around pt-5">
+           <div class="row justify-content-around py-5">
    
                <h1 class="title">Gestisci il tuo ristorante</h1>
    
@@ -49,53 +49,58 @@
 </script>
 
 <style lang="scss" scoped>
-.footer {
-  background-color: limegreen;
-  padding: 20px;
-  text-align: center;
+section{
+    background-image: url('../../public/img/black-n-white-bg-filters.png');
+    background-size: cover;
+    min-height: 60vh;
 }
 
-.footer-text {
-  color: white;
-  font-size: 16px;
-  margin: 0;
+.title{
+    font-family: 'Modak', sans-serif;
+    text-transform: uppercase;
+    font-size: 48px;
+    color:rgb(247, 164, 44);
 }
 
-.footer-links {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 20px;
+.risto{
+    background-color: rgb(247, 164, 44);
 }
 
-.footer-column {
-  flex: 1;
-  margin-right: 30px;
+.container{
+    height: 100%;
 }
 
-.footer-column h3 {
-  color: white;
-  font-size: 18px;
-  margin-bottom: 10px;
+.info{
+    background-color: black;
+    color: #ffffff;
+    font-size: 36px;
+    ul{
+        list-style-type: none;
+        padding: 0;
+    }
 }
 
-.footer-column ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+h2{
+    font-family: 'Fredoka-one', sans-serif;
+    text-transform: uppercase;
+    font-size: 48px;
+    font-weight: 800;
+    color: #ffffff;
 }
 
-.footer-column li {
-  margin-bottom: 8px;
-  font-size: 14px;
+@media screen and (max-width: 1000px) {
+
+
+.title {
+  font-size: 36px;
 }
 
-.footer-column li a {
-  color: white;
-  text-decoration: none;
-  cursor: pointer;
+button {
+  height: 100px;
 }
 
-.footer-column li a:hover {
-  color: black;
+h2 {
+  font-size: 36px;
+}
 }
 </style>
