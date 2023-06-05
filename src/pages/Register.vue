@@ -17,7 +17,7 @@
             
 
             <button class="rounded-4 risto px-4 my-3" @click="searchRegister">
-                <h2 class="my-auto">
+                <h2 id="font-metti" class="my-auto">
                     Registrati
                 </h2>
             </button>
@@ -55,6 +55,11 @@
 </script>
 
 <style lang="scss" scoped>
+
+#font-metti{
+    font-family: 'Fredoka One','sans-serif';
+}
+
 section{
     background-image: url('../../public/img/black-n-white-bg-filters.png');
     background-size: cover;
