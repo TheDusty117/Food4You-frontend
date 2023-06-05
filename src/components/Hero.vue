@@ -1,7 +1,6 @@
 <template>
-  <div class="hero">
-    
-  </div>
+  <div></div>
+  <div class="hero"></div>
 </template>
 
 <script>
@@ -17,7 +16,6 @@ import '@fontsource/modak';
   .hero{
     background-image: url("../../public/img/HERO DEF.png");
       height: 60vh;
-      width: 100vw;
       background-size: cover;
       background-repeat: no-repeat;
       background-position: 50%;
