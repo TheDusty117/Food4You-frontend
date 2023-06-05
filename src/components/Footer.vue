@@ -38,28 +38,28 @@
         </div>
       </div>
       <h5 class="footer-text mt-5 mb-4">Realizzato dal Team4</h5>
-      <div class="extra-content d-flex justify-content-center">
-        <div class="extra-content-item col-3">
+      <div class="extra-content d-flex flex-wrap justify-content-center">
+        <div class="extra-content-item col-6 col-md-3 col-lg-2">
           <div>
-            <img src="/img/TheDusty117.jpeg" alt="Immagine 5" class="rounded-circle mx-5">
+            <img src="/img/TheDusty117.jpeg" alt="Immagine 5" class="rounded-circle mx-3 mb-2">
             <a href="https://github.com/TheDusty117" class="link-style">TheDusty117</a>
           </div>
         </div>
-        <div class="extra-content-item col-3">
+        <div class="extra-content-item col-6 col-md-3 col-lg-2">
           <div>
-            <img src="/img/Blaser993.png" alt="Immagine 6" class="rounded-circle mx-5">
+            <img src="/img/Blaser993.png" alt="Immagine 6" class="rounded-circle mx-3 mb-2">
             <a href="https://github.com/Blaser993" class="link-style">Blaser993</a>
           </div>
         </div>
-        <div class="extra-content-item col-3">
+        <div class="extra-content-item col-6 col-md-3 col-lg-2">
           <div>
-            <img src="/img/stefanodisanza.png" alt="Immagine 7" class="rounded-circle mx-5">
+            <img src="/img/stefanodisanza.png" alt="Immagine 7" class="rounded-circle mx-3 mb-2">
             <a href="https://github.com/stefanodisanza" class="link-style">stefanodisanza</a>
           </div>
         </div>
-        <div class="extra-content-item col-3">
+        <div class="extra-content-item col-6 col-md-3 col-lg-2">
           <div>
-            <img src="/img/nicolaoo 2.png" alt="Immagine 8" class="rounded-circle mx-5">
+            <img src="/img/nicolaoo 2.png" alt="Immagine 8" class="rounded-circle mx-3 mb-2">
             <a href="https://github.com/nicolaoo" class="link-style">nicolaoo</a>
           </div>
         </div>
@@ -168,5 +168,27 @@ export default {
 
 .footer-column li a:hover {
   color: black;
+}
+
+/* Stili responsive */
+@media (max-width: 576px) {
+  .footer-column {
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+}
+
+@media (min-width: 768px) {
+  .extra-content-item {
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
+}
+
+@media (min-width: 992px) {
+  .extra-content-item {
+    flex: 0 0 20%;
+    max-width: 20%;
+  }
 }
 </style>

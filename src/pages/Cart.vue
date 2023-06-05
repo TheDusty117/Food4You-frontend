@@ -1,6 +1,6 @@
 <template>
   <div class="background-img pt-5 pb-5">
-    <div class="container px-5 mn-5">
+    <div class="container">
       <div class="row">
         <div class="col-md-12">
           <div class="card-deck">
@@ -12,7 +12,7 @@
                   <h6>Quantità: {{ food.quantity }}</h6>
                 </div>
                 <p class="card-text fw-bold">€ {{ calculatePrice(food) }}</p>
-                <div class="">
+                <div class="button-group">
                   <button @click="removeFoodFromCart(index)" class="btn btn-danger m-2">Cancella cibo</button>
                   <button @click="removeOneFoodFromCart(index)" class="btn btn-primary m-2">Rimuovi quantità</button>
                 </div>
@@ -150,5 +150,23 @@ export default {
 
 .card-deck {
   margin-bottom: 20px;
+}
+
+.button-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  margin: 0.5rem;
+}
+
+@media (max-width: 575px) {
+  .container {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
 }
 </style>
