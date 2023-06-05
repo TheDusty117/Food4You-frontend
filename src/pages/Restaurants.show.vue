@@ -163,6 +163,7 @@ export default {
 
 .food-image {
   position: relative;
+  z-index: -5;
 
   img {
     border-top-right-radius: 10px;
