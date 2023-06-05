@@ -15,18 +15,25 @@
                 :class="{ 'checked': selectedCategories.includes(category.id) }"
               >
                 <label class="form-check-label mb-2" :for="category.id">
-                  <img
-                    class="logo-categoria"
-                    :src="category.category_img"
-                    alt=""
-                  />
+                  <div
+                    class="category-name"
+                    :style="{
+                      backgroundColor: selectedCategories.includes(category.id) ? '#45b925c0' : ''
+                    }"
+                  >
+                    <img
+                      class="logo-categoria"
+                      :src="category.category_img"
+                      alt=""
+                    />
+                    {{ category.name }}
+                  </div>
                   <input
                     class="form-check-input"
                     type="checkbox"
                     @change="selectCategory(category)"
                     :id="category.id"
                   />
-                  {{ category.name }}
                 </label>
               </div>
             </div>
@@ -143,21 +150,14 @@ export default {
   display: none;
 }
 
-.form-check-input:checked + .form-check-label {
-  color: red;
-}
-
-.form-check-input:checked + .form-check-label .logo-categoria {
-  background-color: red;
-  border-color: red;
-}
-
 .checked .form-check-label .logo-categoria {
-  background-color: red;
-  border-color: red;
+  border-color: #45b925c0;
 }
 
 /* Stili per il testo delle categorie */
+.category-name{
+  border-radius: 20px;
+}
 .form-check-label {
   font-weight: bold;
 }
@@ -165,6 +165,13 @@ export default {
 .logo-categoria {
   width: 50px;
   transition: background-color 0.3s, border-color 0.3s;
+}
+
+.category-name {
+  display: flex;
+  align-items: center;
+  padding: 6px;
+  transition: background-color 0.3s;
 }
 
 /* Altri stili */
