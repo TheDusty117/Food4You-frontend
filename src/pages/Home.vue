@@ -1,12 +1,12 @@
 <template >
-    <section>
-
+    
     
     <DefaultLayout>
-
+        
         
         <Hero/>
-
+        
+        <section>
         
             <div class="container text-center">
             <div class="row justify-content-around">
@@ -37,11 +37,11 @@
             </div>
 
         </div>
+    </section>
         
         
         
     </DefaultLayout>
-</section>
 </template>
 
 <script>
@@ -73,22 +73,14 @@ export default {
     color: #ffffff;
 }
 
-.mt-5 {
-    margin-top: 3rem;
-}
-
-.bg-lightest-orange {
-    background-color: #FEEBD7;
-    /* Cambia il colore arancione chiarissimo a tua scelta */
-}
 
 section{
-    height: 100vh;
+   height: 100vh;
     background-color: black;
 }
 
 button {
-    height: 72px;   
+    height: 144px;   
 }
 
 h2{

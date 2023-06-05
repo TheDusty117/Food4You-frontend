@@ -27,6 +27,8 @@ export default {
 }
 
 
+
+
 #app {
   /* background-image: url('./public/img/black-n-white-bg-filters.png');
   background-position: center;

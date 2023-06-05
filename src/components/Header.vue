@@ -1,7 +1,7 @@
 <template>
-  <header @click="toggleMenu" class="header-style bg-slate-100">
+  <header @click="toggleMenu" class="header bg-slate-100">
 
-    <div  class="container nav">
+    <div  class="nav container">
 
       <div  class="nav__item">
         <img  class="main-logo" src="../../public/img/Logo Food4You shadow.png" alt="">
@@ -13,7 +13,7 @@
       </div>
 
       
-        <!-- <div class="burger-icon nav__burger"  @click="toggleMenu"></div> -->
+        <div class="burger-icon nav__burger"  @click="toggleMenu"></div> 
       
 
       <ul class="nav__menu" :class="{ 'nav__menu--open': isMenuOpen }">
@@ -74,12 +74,12 @@ export default {
 }
 
 header {
-  
+  background-color: #44B925;
   z-index: 999;
   top: 0;
+  position: sticky;
   padding-top: 16px;
   min-height: 120px;
-  position: sticky;
   font-family: 'Modak', sans-serif;
   
   .nav-element {
@@ -90,23 +90,10 @@ header {
     font-size: 38px;
     color: white;
     text-shadow: rgb(0, 0, 0) 2px 5px 10px;
-    .main-logo {
-      
-    }
+
   }
   
-  .nav__burger {
-    display: none;
-    cursor: pointer;
-    padding: 10px;
-    .burger-icon {
-      width: 30px;
-      height: 3px;
-      background-color: white;
-      margin: 6px 0;
-      transition: all 0.3s ease;
-    }
-  }
+
   
   router-link {
     text-decoration: none;
@@ -131,10 +118,6 @@ header {
   }
 }
 
-header {
-  background-color: #44B925;
-}
-
 @media screen and (max-width: 1000px) {
   header {
 
@@ -156,7 +139,6 @@ header {
       width: 100%;
       background-color: #44B925;
       box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-      transition: all 0.3s ease;
       opacity: 0;
       visibility: hidden;
       
@@ -176,9 +158,7 @@ header {
 
     }
     
-    .nav__burger {
-      display: block;
-    }
+
   }
 }
 

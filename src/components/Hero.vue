@@ -15,6 +15,7 @@ import '@fontsource/modak';
 <style lang="scss" scoped>
 
   .hero{
+    
     width: 100vw;
     img{
       width: 100vw;
