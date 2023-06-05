@@ -3,7 +3,7 @@
     <div class="row">
       <div class="aside col-sm-2">
         <div class="card-body container">
-          <h5 class="card-title">Filtri</h5>
+          <!-- <h2 class="card-title text-center">Filtri</h2> -->
           <div class="row justify-content-evenly">
             <div
               class="selected col-12 category-item"
@@ -26,7 +26,9 @@
                       :src="category.category_img"
                       alt=""
                     />
-                    {{ category.name }}
+                    <span>
+                      {{ category.name }}
+                    </span>
                   </div>
                   <input
                     class="form-check-input"
@@ -142,6 +144,12 @@ export default {
 
 <style lang="scss" scoped>
 /* Stili per la checkbox */
+
+
+.form-check{
+  padding-left: 0px;
+  padding-right: 50px;
+}
 .form-check-input {
   width: 20px;
   height: 20px;
@@ -155,9 +163,24 @@ export default {
 }
 
 /* Stili per il testo delle categorie */
+.category-item:first-of-type{
+  padding-top: 30px;
+}
 .category-name{
   border-radius: 20px;
+  font-family: 'Fredoka One', sans-serif;
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  transition: transform .2s; /* Animation */
 }
+.category-name:hover{
+  background-color: #45b92563;
+  transform: scale(1.2); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+
+}
+
 .form-check-label {
   font-weight: bold;
 }
@@ -172,6 +195,14 @@ export default {
   align-items: center;
   padding: 6px;
   transition: background-color 0.3s;
+}
+
+@media screen and (max-width: 999px) {
+  .category-name{
+    span{
+      display: none;
+    }
+  }
 }
 
 /* Altri stili */
