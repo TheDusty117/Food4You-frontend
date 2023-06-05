@@ -15,11 +15,11 @@
 
       </div>     
 
-      <ul class="nav__menu" :class="{ 'nav__menu--open': isMenuOpen }">
+      <ul class="nav__menu mb-0" :class="{ 'nav__menu--open': isMenuOpen }">
         <li>
         <router-link style="text-decoration: none; color: inherit;" :to="{ name: 'home' }">
 
-            <span class="nav-element">
+            <span id="shadow" class="nav-element">
               Home
             </span>
           </router-link>
@@ -112,7 +112,9 @@ header {
 
 }
 
-
+span{
+  
+}
 
 .nav__menu {
   margin-left: auto;
@@ -129,6 +131,8 @@ header {
 
 @media screen and (max-width: 1000px) {
   header {
+
+
 
 
     .mobile{
@@ -160,6 +164,7 @@ header {
       
       li {
         margin-bottom: 1rem;
+        
       }
 
       .nav__item{
