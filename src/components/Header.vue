@@ -10,11 +10,7 @@
             Food4You
           </span>
         </router-link>
-      </div>
-
-      
-        <div class="burger-icon nav__burger"  @click="toggleMenu"></div> 
-      
+      </div>     
 
       <ul class="nav__menu" :class="{ 'nav__menu--open': isMenuOpen }">
         <li>
@@ -106,6 +102,8 @@ header {
   align-items: center;
   gap: 2rem;
 }
+
+
 
 .nav__menu {
   margin-left: auto;
