@@ -15,10 +15,10 @@
                    </h2>
                </button>
    
-               <div class="info">
+               <div class="info rounded-4">
                    <p> Non hai ancora un account? Allora 
                        <router-link  :to="{ name: 'register' }"><a href="">registrati</a></router-link>
-                       </p>
+                    </p>
                </div>
                
    
@@ -28,7 +28,8 @@
    </section>
    
        
-   </template>
+</template>
+
 <script>
 
 
@@ -64,6 +65,9 @@ section{
 
 .risto{
     background-color: rgb(247, 164, 44);
+    h2{
+        font-family: 'Fredoka One', sans-serif;
+    }
 }
 
 .container{
@@ -74,6 +78,11 @@ section{
     background-color: black;
     color: #ffffff;
     font-size: 36px;
+    p{
+        font-family: 'Baloo Bhaijaan 2 Variable', sans-serif;
+        margin: 0px;
+        padding: 10px;
+    }
     ul{
         list-style-type: none;
         padding: 0;

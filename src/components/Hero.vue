@@ -16,7 +16,7 @@ import '@fontsource/modak';
 
   .hero{
     background-image: url("../../public/img/HERO DEF.png");
-      height: 50vh;
+      height: 60vh;
       width: 100vw;
       background-size: cover;
       background-repeat: no-repeat;

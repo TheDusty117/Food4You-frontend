@@ -22,10 +22,10 @@
                 </h2>
             </button>
 
-            <div class="info my-5">
-                <p> Hai già un account? Allora fai il 
+            <div class="info rounded-4 my-5">
+                <p class="mb-0 py-2"> Hai già un account? Allora fai il 
                     <router-link  :to="{ name: 'login' }"><a href="">login</a></router-link>
-                    </p>
+                </p>
             </div>
             
 
@@ -84,7 +84,10 @@ section{
         list-style-type: none;
         padding: 0;
     }
+    font-family: 'Baloo Bhaijaan 2 Variable', sans-serif;
+
 }
+
 
 h2{
     font-family: 'Fredoka-one', sans-serif;

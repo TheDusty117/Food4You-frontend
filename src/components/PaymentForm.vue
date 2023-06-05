@@ -80,22 +80,22 @@
                     </div>
 
                     <!-- Submit button -->
-                    <button type="submit" class="btn btn-primary mt-3">Paga Ora</button>
+                    <button type="submit" class="btn btn-success mt-3">Paga Ora</button>
                 </form>
             </div>
         </div>
         <!-- Payment status popup -->
-        <div v-if="paymentStatus === 'completed'" class="modal fade show d-block" tabindex="-1" role="dialog">
+        <div v-if="paymentStatus === 'completed'" class="popup-wrapper modal fade show d-block" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header text-center d-flex justify-content-center">
                         <h5 class="modal-title text-center">Pagamento completato</h5>
                     </div>
                     <div class="modal-footer d-flex justify-content-center">
-                        <router-link to="/restaurants" class="btn btn-primary">
+                        <router-link to="/restaurants" class="btn btn-success">
                             Effettua un altro ordine
                         </router-link>
-                        <router-link to="/home" class="btn btn-primary ml-2">
+                        <router-link to="/" class="btn btn-outline-success ml-2">
                             Torna alla home
                         </router-link>
                     </div>
@@ -109,7 +109,11 @@
 </template>
   
 <script>
+
+
 export default {
+
+
     data() {
         return {
             cardNumber: '',
@@ -245,6 +249,12 @@ export default {
     border-color: red;
 }
 
+.card-body{
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+
 .overlay {
     position: fixed;
     top: 0;
@@ -254,4 +264,21 @@ export default {
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 999;
 }
+
+.card-title{
+    font-family: 'Fredoka One', sans-serif;
+}
+.form-control{
+    font-family: 'Baloo Bhaijaan 2 Variable', sans-serif;
+}
+
+.btn{
+    font-family: 'Fredoka One', sans-serif !important;
+    
+}
+
+.popup-wrapper{
+    font-family: 'Fredoka One', 'sans-serif' !important;
+}
+
 </style>

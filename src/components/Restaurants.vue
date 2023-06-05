@@ -1,10 +1,10 @@
 <template>
   <div class="container cat-rest-container restaurants-list">
-    <div class="row">
+    <div class="row take-all">
 
       <!-- ASIDE -->
       <div class="aside col-1">
-        <div class="card-body container">
+        <div class="container">
           <!-- <h2 class="card-title text-center">Filtri</h2> -->
           <div class="row justify-content-evenly">
             <div
@@ -24,7 +24,7 @@
                     }"
                   >
                     <img
-                      class="logo-categoria"
+                      class="logo-categoria ms-0"
                       :src="category.category_img"
                       alt=""
                     />
@@ -148,6 +148,9 @@ export default {
 
 <style lang="scss" scoped>
 
+.take-all{
+  
+}
 
 .aside{
   position: fixed;
@@ -221,7 +224,7 @@ export default {
 // RESIZING SCHERMO INTERO
 
   .form-check{
-    height: 90px;
+    height: 82px;
     .logo-categoria{
       width: 50px;
     }
@@ -278,6 +281,7 @@ export default {
     margin-top: 8px;
   }
   
+  
   .form-check{
   padding-left: 20px;
   padding-right: 50px;
@@ -333,9 +337,11 @@ export default {
 }
 
 
-// @media screen  (max-width) {
-  
-// }
+@media screen and (max-width: 500px) {
+  col-10{
+    margin-left: 20px
+  }
+}
 
 /* Altri stili */
 
