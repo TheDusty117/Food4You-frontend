@@ -1,6 +1,6 @@
 <template>
   <div class="hero">
-    <img src="../../public/img/HERO DEF.png" alt="">
+    
   </div>
 </template>
 
@@ -15,11 +15,36 @@ import '@fontsource/modak';
 <style lang="scss" scoped>
 
   .hero{
-    width: 100vw;
-    img{
+    background-image: url("../../public/img/HERO DEF.png");
+      height: 50vh;
       width: 100vw;
-      
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: 50%;
+  }
+
+  @media screen and (max-width: 1000px){
+    .hero{
+      background-image: url("../../public/img/HERO DEF.png");
+      height: 50vh;
+      width: 100vw;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: 50%;
     }
+
+  }
+
+  @media screen and (max-width: 700px){
+    .hero{
+      background-image: url("../../public/img/HERO DEF.png");
+      height: 25vh;
+      width: 100vw;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: 50%;
+    }
+
   }
 
 </style>

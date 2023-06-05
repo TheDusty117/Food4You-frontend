@@ -6,7 +6,7 @@
             <h1 class="title">Registra il tuo ristorante</h1>
 
 
-            <div class="info rounded-4 col-6 my-3">
+            <div class="info rounded-4 col-6 col-12 my-3">
                 <ul class="my-3">
                     <li class="my-3">Unisciti alla community</li>
                     <li class="my-3">Inserisci i tuoi piatti</li>
@@ -22,7 +22,7 @@
                 </h2>
             </button>
 
-            <div class="info">
+            <div class="info my-5">
                 <p> Hai già un account? Allora fai il 
                     <router-link  :to="{ name: 'login' }"><a href="">login</a></router-link>
                     </p>
@@ -58,6 +58,7 @@
 section{
     background-image: url('../../public/img/black-n-white-bg-filters.png');
     background-size: cover;
+    min-height: 50vh;
 }
 
 .title{
@@ -91,5 +92,21 @@ h2{
     font-size: 48px;
     font-weight: 800;
     color: #ffffff;
+}
+
+@media screen and (max-width: 1000px) {
+
+
+.title {
+  font-size: 36px;
+}
+
+button {
+  height: 100px;
+}
+
+h2 {
+  font-size: 36px;
+}
 }
 </style>

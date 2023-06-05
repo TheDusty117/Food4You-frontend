@@ -1,33 +1,40 @@
 <template >
-    <section>
-
+    
     
     <DefaultLayout>
 
+        
+        
         <Hero/>
+        
+        <section>
+
         
             <div class="container text-center">
             <div class="row justify-content-around">
 
                 <h1 class="title">Scegli un nostro servizio</h1>
 
-                <div class="col-6 d-flex justify-content-around">
-                    <router-link  :to="{ name: 'register' }">
-                    <button class="rounded-4 risto px-4">
-                        <h2 class="my-auto">Ho un ristorante</h2>
-                        
-                    </button>
-                    </router-link>
-                </div>
-                
-                <div class="col-6 d-flex justify-content-around">
-                    <router-link  :to="{ name: 'restaurants.index' }">
-                        <button class="rounded-4 cibo px-4">
-                            <h2 class="my-auto">Ho bisogno di cibo</h2>
+                <div class="row gap-4">
+
+                    <div class="col-12 d-flex justify-content-around">
+                        <router-link  :to="{ name: 'register' }">
+                        <button class="rounded-4 col-12 risto px-4">
+                            <h2 class="my-auto">Ho un ristorante</h2>
                             
                         </button>
-                    </router-link>
+                        </router-link>
+                    </div>
+                    <div class=" col-12  d-flex justify-content-around">
+                        <router-link  :to="{ name: 'restaurants.index' }">
+                            <button class="rounded-4 col-12 cibo px-4">
+                                <h2 class="my-auto">Ho bisogno di cibo</h2>
+                                
+                            </button>
+                        </router-link>
+                    </div>
                 </div>
+                
                    
                    
                 
@@ -35,11 +42,11 @@
             </div>
 
         </div>
+    </section>
         
         
         
     </DefaultLayout>
-</section>
 </template>
 
 <script>
@@ -71,22 +78,14 @@ export default {
     color: #ffffff;
 }
 
-.mt-5 {
-    margin-top: 3rem;
-}
-
-.bg-lightest-orange {
-    background-color: #FEEBD7;
-    /* Cambia il colore arancione chiarissimo a tua scelta */
-}
 
 section{
-    height: 100vh;
+   padding-bottom: 72px ;
     background-color: black;
 }
 
 button {
-    height: 72px;   
+    height: 144px;   
 }
 
 h2{
@@ -102,5 +101,22 @@ h2{
 }
 .cibo{
     background-color: rgb(68, 185, 37);
+}
+
+
+@media screen and (max-width: 1000px) {
+
+
+  .title {
+    font-size: 36px;
+  }
+
+  button {
+    height: 100px;
+  }
+
+  h2 {
+    font-size: 36px;
+  }
 }
 </style>
