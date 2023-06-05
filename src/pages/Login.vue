@@ -48,6 +48,54 @@
     }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+.footer {
+  background-color: limegreen;
+  padding: 20px;
+  text-align: center;
+}
 
+.footer-text {
+  color: white;
+  font-size: 16px;
+  margin: 0;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.footer-column {
+  flex: 1;
+  margin-right: 30px;
+}
+
+.footer-column h3 {
+  color: white;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-column li {
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.footer-column li a {
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.footer-column li a:hover {
+  color: black;
+}
 </style>
