@@ -7,8 +7,11 @@
             <div v-for="(food, index) in cart" :key="index" class="card mb-3 mt-5"
               :style="{ transitionDelay: `${index * 0.1}s` }">
               <div class="card-body">
-                <h5 class="card-title">{{ food.name }} ({{ food.quantity }} unità)</h5>
-                <p class="card-text">€ {{ food.price }}</p>
+                <div class="card-title">
+                  <h4>{{ food.name }}</h4>
+                  <h6>Quantità: {{ food.quantity }}</h6>
+                </div>
+                <p class="card-text fw-bold">€ {{ calculatePrice(food) }}</p>
                 <div class="">
                   <button @click="removeFoodFromCart(index)" class="btn btn-danger m-2">Cancella cibo</button>
                   <button @click="removeOneFoodFromCart(index)" class="btn btn-primary m-2">Rimuovi quantità</button>
@@ -101,6 +104,13 @@ export default {
       });
       return total.toFixed(2);
     },
+    calculatePrice(food) {
+      if (food.quantity > 1) {
+        return (parseFloat(food.price) * food.quantity).toFixed(2);
+      } else {
+        return food.price;
+      }
+    },
     confirmAbandonCart() {
       this.$router.push('/restaurants');
     },
@@ -120,7 +130,7 @@ export default {
 .background-img {
   background-image: url('./public/img/black-n-white-bg-filters.png');
   background-position: center;
-  height: 100vh;
+  height: 100%;
 }
 
 .card {
