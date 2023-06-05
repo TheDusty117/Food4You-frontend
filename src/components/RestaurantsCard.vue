@@ -1,6 +1,6 @@
 <template>
 
-  <div class="container p-4">
+  <div class="container cont-custom p-4">
 
     <div class="card-custom">
 
@@ -115,4 +115,7 @@ ul{
   background-color: #0069d9;
   border-color: #0062cc;
 }
+
+
+
 </style>
