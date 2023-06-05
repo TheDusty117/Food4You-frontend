@@ -1,9 +1,9 @@
 <template>
   <header class="header-style py-3 bg-slate-100">
 
-    
+
     <div class="container nav">
-      
+
       <div class="nav__item">
         <img class="main-logo" src="../../public/img/Logo Food4You shadow.png" alt="">
         <router-link style="text-decoration: none; color: inherit;" :to="{ name: 'home' }">
@@ -12,14 +12,14 @@
           </span>
         </router-link>
       </div>
-      
+
       <ul class="nav__menu mb-0">
         <li>
-            <router-link style="text-decoration: none; color: inherit;" :to="{ name: 'home' }">
-              <span class="nav-element">
-                Home
-              </span>  
-            </router-link>
+          <router-link style="text-decoration: none; color: inherit;" :to="{ name: 'home' }">
+            <span class="nav-element">
+              Home
+            </span>
+          </router-link>
         </li>
         <li>
           <router-link style="text-decoration: none; color: inherit;" :to="{ name: 'restaurants.index' }">
@@ -43,7 +43,7 @@
           </router-link>
         </li>
       </ul>
-      
+
     </div>
 
   </header>
@@ -64,7 +64,7 @@ import Hero from './Hero.vue';
 
 export default {
 
-  components:{
+  components: {
     Hero,
   },
 
@@ -75,29 +75,30 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
-.main-logo{
+.main-logo {
   width: 90px
 }
 
-header{
+header {
   top: 0;
   height: 124px;
   position: sticky;
   font-family: 'Modak', sans-serif;
-  
-  .nav-element{
+  z-index: 5;
+
+  .nav-element {
     text-transform: uppercase;
   }
-  .nav__item{
+
+  .nav__item {
     font-size: 38px;
     color: white;
     text-shadow: rgb(0, 0, 0) 2px 5px 10px;
-    .main-logo{
-      
-    }
+
+    .main-logo {}
   }
-  router-link{
+
+  router-link {
     text-decoration: none;
   }
 }
@@ -108,12 +109,13 @@ header{
   display: flex;
   align-items: center;
   gap: 2rem;
-  
+
 }
 
 .nav__menu {
   margin-left: auto;
-  li{
+
+  li {
     list-style: none;
     font-family: 'Modak', sans-serif;
     font-size: 28px;
@@ -123,9 +125,8 @@ header{
   }
 }
 
-header{
+header {
   background-color: #44B925;
 
 }
-
 </style>
