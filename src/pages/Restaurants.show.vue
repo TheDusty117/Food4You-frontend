@@ -162,6 +162,7 @@ export default {
 }
 
 .food-image {
+  position: relative;
 
   img {
     border-top-right-radius: 10px;
@@ -228,7 +229,7 @@ ul {
 
   &:hover .offcanvas-price {
     width: 100%;
-    bottom: 30%;
+    bottom: 0%;
     display: flex;
     background-color: white;
     padding: 1rem;
