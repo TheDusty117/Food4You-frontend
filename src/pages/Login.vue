@@ -1,7 +1,7 @@
 <template>
     <section>
        <div class="container text-center">
-           <div class="row justify-content-around pt-5">
+           <div class="row justify-content-around py-5">
    
                <h1 class="title">Gestisci il tuo ristorante</h1>
    
@@ -48,6 +48,59 @@
     }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+section{
+    background-image: url('../../public/img/black-n-white-bg-filters.png');
+    background-size: cover;
+    min-height: 60vh;
+}
 
+.title{
+    font-family: 'Modak', sans-serif;
+    text-transform: uppercase;
+    font-size: 48px;
+    color:rgb(247, 164, 44);
+}
+
+.risto{
+    background-color: rgb(247, 164, 44);
+}
+
+.container{
+    height: 100%;
+}
+
+.info{
+    background-color: black;
+    color: #ffffff;
+    font-size: 36px;
+    ul{
+        list-style-type: none;
+        padding: 0;
+    }
+}
+
+h2{
+    font-family: 'Fredoka-one', sans-serif;
+    text-transform: uppercase;
+    font-size: 48px;
+    font-weight: 800;
+    color: #ffffff;
+}
+
+@media screen and (max-width: 1000px) {
+
+
+.title {
+  font-size: 36px;
+}
+
+button {
+  height: 100px;
+}
+
+h2 {
+  font-size: 36px;
+}
+}
 </style>
