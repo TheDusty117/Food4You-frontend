@@ -1,14 +1,6 @@
-<template>
-
-      <div class="container">
-        <h1>Ristoranti</h1>
-      </div>
-      <div class="container">
-        <Restaurants />
-      </div>
-  
-
-  </template>
+<template>     
+  <Restaurants />
+</template>
   
   <script>
   
