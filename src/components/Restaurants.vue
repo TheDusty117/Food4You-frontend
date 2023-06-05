@@ -1,10 +1,10 @@
 <template>
   <div class="container cat-rest-container restaurants-list">
-    <div class="row">
+    <div class="row take-all">
 
       <!-- ASIDE -->
       <div class="aside col-1">
-        <div class="card-body container">
+        <div class=" container">
           <!-- <h2 class="card-title text-center">Filtri</h2> -->
           <div class="row justify-content-evenly">
             <div
@@ -148,6 +148,9 @@ export default {
 
 <style lang="scss" scoped>
 
+.take-all{
+  
+}
 
 .aside{
   position: fixed;
@@ -221,7 +224,7 @@ export default {
 // RESIZING SCHERMO INTERO
 
   .form-check{
-    height: 90px;
+    height: 82px;
     .logo-categoria{
       width: 50px;
     }

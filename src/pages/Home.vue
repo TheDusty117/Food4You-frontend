@@ -20,7 +20,7 @@
                     <div class="col-12 d-flex justify-content-around">
                         <router-link  :to="{ name: 'register' }">
                         <button class="rounded-4 col-12 risto px-4">
-                            <h2 class="my-auto">Ho un ristorante</h2>
+                            <h2 class=" font-apply my-auto">Ho un ristorante</h2>
                             
                         </button>
                         </router-link>
@@ -28,7 +28,7 @@
                     <div class=" col-12  d-flex justify-content-around">
                         <router-link  :to="{ name: 'restaurants.index' }">
                             <button class="rounded-4 col-12 cibo px-4">
-                                <h2 class="my-auto">Ho bisogno di cibo</h2>
+                                <h2 class="font-apply my-auto">Ho bisogno di cibo</h2>
                                 
                             </button>
                         </router-link>
@@ -66,6 +66,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+.font-apply{
+    font-family: 'Fredoka One', sans-serif;
+
+}
+
 .container {
     max-width: 960px;
     margin: 0 auto;
@@ -74,7 +80,7 @@ export default {
 .title{
     font-family: 'Modak', sans-serif;
     text-transform: uppercase;
-    font-size: 48px;
+    font-size: 68px;
     color: #ffffff;
 }
 
