@@ -42,8 +42,7 @@
         </div>
         <!-- Pulsante per svuotare il carrello -->
         <button @click="clearCart" class="btn btn-warning m-3">Svuota il carrello</button>
-        <!-- Pulsante per tornare alla pagina dei ristoranti -->
-        <button @click="confirmAbandonCart" class="btn btn-outline-dark mt-5 mb-5">Torna ai ristoranti</button>
+
 
         <!-- Componente per la finestra di dialogo di conferma per lo svuotamento del carrello -->
         <ConfirmDialog v-if="showConfirmClearDialog" @confirm="confirmClearCart" @cancel="cancelClearCart">

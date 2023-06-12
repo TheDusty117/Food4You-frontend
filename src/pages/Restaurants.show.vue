@@ -1,97 +1,85 @@
 <template>
-  <template v-if="loading === false">
+  <div>
+    <div v-if="loading === false">
+      <div class="container p-4">
+        <!-- Carrello -->
+        <div class="container py-4">
+          <div class="restaurant-card">
+            <ul class="list-unstyled m-0">
+              <div class="d-flex align-items-start justify-content-between mb-4">
+                <h1 class="text-center d-none d-md-block">{{ restaurant.name }}</h1>
+              </div>
+              <h3 class="d-none d-md-block">Contatti</h3>
+              <li class="d-flex align-items-center mb-2">
+                <span class="badge-contact">
+                  <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512">
+                    <path
+                      d="M384 192c0 87.4-117 243-168.3 307.2c-12.3 15.3-35.1 15.3-47.4 0C117 435 0 279.4 0 192C0 86 86 0 192 0S384 86 384 192z" />
+                  </svg>
+                </span>
+                <div class="d-none d-md-block ms-2 restaurant-contacts">
+                  {{ restaurant.address }}
+                </div>
+              </li>
+              <li class="d-flex align-items-center mb-2">
+                <span class="badge-contact">
+                  <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
+                    <path
+                      d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z" />
+                  </svg>
+                </span>
+                <div class="d-none d-md-block ms-2 restaurant-contacts">
+                  {{ restaurant.email }}
+                </div>
+              </li>
+              <li class="d-flex align-items-center mb-2">
+                <span class="badge-contact">
+                  <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512">
+                    <path
+                      d="M16 64C16 28.7 44.7 0 80 0H304c35.3 0 64 28.7 64 64V448c0 35.3-28.7 64-64 64H80c-35.3 0-64-28.7-64-64V64zM224 448a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zM304 64H80V384H304V64z" />
+                  </svg>
+                </span>
+                <div class="d-none d-md-block ms-2 restaurant-contacts">
+                  {{ restaurant.telephone_number }}
+                </div>
+              </li>
+            </ul>
+            <figure class="image-card col col-lg-8">
+              <img :src="restaurant.img_restaurant" alt="">
+            </figure>
+          </div>
+        </div>
 
-    <div class="container p-4">
-      <!-- carrello -->
-
-
-      <div class="container py-4">
-
-        <div class="restaurant-card ">
-          <ul class=" list-unstyled m-0">
-            <div class="d-flex align-items-start justify-content-between mb-4">
-              <h1 class=" text-center d-none d-md-block">{{ restaurant.name }}</h1>
-            </div>
-            <h3 class="d-none d-md-block">Contatti</h3>
-            <li class="d-flex align-items-center  mb-2">
-              <span class="badge-contact">
-
-                <svg xmlns="http://www.w3.org/2000/svg" height="1em"
-                  viewBox="0 0 384 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                  <path
-                    d="M384 192c0 87.4-117 243-168.3 307.2c-12.3 15.3-35.1 15.3-47.4 0C117 435 0 279.4 0 192C0 86 86 0 192 0S384 86 384 192z" />
-                </svg>
-              </span>
-              <div class="d-none d-md-block ms-2 restaurant-contacts">
-
-                {{ restaurant.address }}
+        <div class="container-menu p-4 d-flex">
+          <ul class="grid-menu col-8 col-md-8 col-lg-8 col-xl-8 col">
+            <li v-for="food in restaurant.food" :key="food.id" class="my-3 card-food">
+              <div class="food-image">
+                <img :src="food.image" alt="">
+                <div class="offcanvas-price">
+                  <p class="text-black food-item-price">€{{ food.price }}</p>
+                  <button @click="AddFoodToCart(food)" class="add-food btn btn-success">
+                    AGGIUNGI
+                  </button>
+                </div>
+              </div>
+              <div class="food-item">
+                <div class="food-item-info">
+                  <h4 class="food-item-name">{{ food.name }}</h4>
+                </div>
+                <p class="food-item-description">{{ food.description }}</p>
               </div>
             </li>
-            <li class="d-flex align-items-center  mb-2">
-              <span class="badge-contact">
-
-                <svg xmlns="http://www.w3.org/2000/svg" height="1em"
-                  viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                  <path
-                    d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z" />
-                </svg>
-              </span>
-              <div class="d-none d-md-block ms-2 restaurant-contacts">
-
-                {{ restaurant.email }}
-              </div>
-            </li>
-            <li class="d-flex align-items-center  mb-2">
-              <span class="badge-contact">
-                <svg xmlns="http://www.w3.org/2000/svg" height="1em"
-                  viewBox="0 0 384 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                  <path
-                    d="M16 64C16 28.7 44.7 0 80 0H304c35.3 0 64 28.7 64 64V448c0 35.3-28.7 64-64 64H80c-35.3 0-64-28.7-64-64V64zM224 448a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zM304 64H80V384H304V64z" />
-                </svg>
-              </span>
-              <div class="d-none d-md-block ms-2 restaurant-contacts">
-                {{ restaurant.telephone_number }}
-              </div>
-            </li>
-            <!-- <li class="mb-2">
-
-              {{ restaurant.vat }}
-            </li> -->
-
           </ul>
-          <figure class="image-card col col-lg-8">
-            <img :src="restaurant.img_restaurant" alt="">
-          </figure>
+          <Cart class="col-4 col-md-4 col-lg-4 col-xl-4 ms-4" />
         </div>
       </div>
 
-
-      <div class="container-menu p-4 d-flex">
-        <ul class="grid-menu col-8 col-md-8 col-lg-8 col-xl-8 col"> <!-- Imposta la larghezza su 8/12 (2/3) -->
-          <li v-for="food in restaurant.food" :key="food.id" class="my-3  card-food">
-            <div class="food-image">
-              <img :src="food.image" alt="">
-              <div class="offcanvas-price">
-                <p class="text-black food-item-price">€{{ food.price }}</p>
-                <button @click="AddFoodToCart(food)" class="add-food btn btn-success">
-                  AGGIUNGI
-                </button>
-              </div>
-            </div>
-            <div class="food-item">
-              <div class="food-item-info">
-                <h4 class="food-item-name">{{ food.name }}</h4>
-              </div>
-              <p class="food-item-description">{{ food.description }}</p>
-            </div>
-          </li>
-        </ul>
-        <Cart class="col-4 col-md-4 col-lg-4 col-xl-4 ms-4" /> <!-- Imposta la larghezza su 4/12 (1/3) -->
+      <!-- Messaggio di notifica -->
+      <div v-if="showCartMessage" class="cart-message">
+        Cibo aggiunto al carrello
       </div>
-
-
     </div>
-  </template>
+  </div>
 </template>
 
 <script>
@@ -104,13 +92,13 @@ export default {
   components: {
     RestaurantsCard,
     Cart,
-
   },
   data() {
     return {
       restaurant: null,
       loading: true,
-      store
+      store,
+      showCartMessage: false
     };
   },
   props: ['slug'],
@@ -119,7 +107,7 @@ export default {
       this.loading = true;
 
       axios
-        .get(`http://127.0.0.1:8000/api/restaurants/${this.slug}`)
+        .get(`http://127.0.0.1:8000/api/restaurants/${slug}`)
         .then((res) => {
           const { success, restaurant } = res.data;
 
@@ -155,13 +143,17 @@ export default {
         this.store.Cart.push(food);
       }
 
-      console.log(this.restaurant)
+      console.log(this.restaurant);
       localStorage.setItem('foods', JSON.stringify(this.store.Cart));
+
+      this.showCartMessage = true;
+      setTimeout(() => {
+        this.showCartMessage = false;
+      }, 3000);
     },
   },
   created() {
     this.fetchRestaurant(this.slug);
-
   },
   computed: {
     totalQuantity() {
@@ -172,14 +164,45 @@ export default {
       return quantity;
     },
   },
-  beforeRouteUpdate(to, from) {
+  beforeRouteUpdate(to, from, next) {
     const newSlug = to.params.slug;
     this.fetchRestaurant(newSlug);
+    next();
   },
 };
 </script>
 
+
+
 <style lang="scss" scoped>
+.cart-message {
+  font-family: 'Baloo Bhaijaan 2 Variable', sans-serif;
+  position: fixed;
+  top: 400px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 50px 100px;
+  background-color: #f99e00;
+  color: white;
+  border-radius: 15px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  animation: cartMessageFade 3s;
+}
+
+@keyframes cartMessageFade {
+  0% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
 .restaurant-contacts {
   font-family: 'Baloo Bhaijaan 2 Variable', sans-serif;
 

@@ -21,7 +21,8 @@
     "axios": "^1.4.0",
     "bootstrap": "^5.2.3",
     "vue": "^3.2.47",
-    "vue-router": "^4.2.2"
+    "vue-router": "^4.2.2",
+    "vue2-transitions": "^0.3.0"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.1.0",
