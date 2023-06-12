@@ -10,20 +10,7 @@
         <div class="restaurant-card ">
           <ul class=" list-unstyled m-0">
             <div class="d-flex align-items-start justify-content-between mb-4">
-              <button type="button" class=" btn-cart btn btn-success position-relative">
-                <router-link class="text-decoration-none text-uppercase text-white" :to="{ name: 'cart' }"> <svg
-                    xmlns="http://www.w3.org/2000/svg" height="1em"
-                    viewBox="0 0 576 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                    <path
-                      d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z" />
-                  </svg>
-                </router-link>
-                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                  {{ totalQuantity }}
-                  <span class="visually-hidden">unread messages</span>
-                </span>
-              </button>
-              <h1 class="ms-3 text-center d-none d-md-block">{{ restaurant.name }}</h1>
+              <h1 class=" text-center d-none d-md-block">{{ restaurant.name }}</h1>
             </div>
             <h3 class="d-none d-md-block">Contatti</h3>
             <li class="d-flex align-items-center  mb-2">
@@ -72,28 +59,16 @@
             </li> -->
 
           </ul>
-          <figure class="image-card col col-lg-6">
+          <figure class="image-card col col-lg-8">
             <img :src="restaurant.img_restaurant" alt="">
           </figure>
         </div>
       </div>
 
 
-      <!-- <ul class="list-unstyled mb-4">
-        <div class="category-card">
-          <div class="title-type">
-            <h3 class="mb-2">Categorie</h3>
-          </div>
-          <div class="type">
-            <li v-for="category in restaurant.categories" :key="category.id" class="">{{ category.name }}</li>
-          </div>
-        </div>
-      </ul> -->
-
-      <div class="container-menu p-4">
-
-        <ul class="grid-menu">
-          <li v-for="food in restaurant.food" :key="food.id" class="my-3 col col-md-6 col-lg-6 col-xl-6 card-food">
+      <div class="container-menu p-4 d-flex">
+        <ul class="grid-menu col-8 col-md-8 col-lg-8 col-xl-8 col"> <!-- Imposta la larghezza su 8/12 (2/3) -->
+          <li v-for="food in restaurant.food" :key="food.id" class="my-3  card-food">
             <div class="food-image">
               <img :src="food.image" alt="">
               <div class="offcanvas-price">
@@ -111,7 +86,10 @@
             </div>
           </li>
         </ul>
+        <Cart class="col-4 col-md-4 col-lg-4 col-xl-4 ms-4" /> <!-- Imposta la larghezza su 4/12 (1/3) -->
       </div>
+
+
     </div>
   </template>
 </template>
@@ -120,10 +98,12 @@
 import axios from 'axios';
 import RestaurantsCard from '../components/RestaurantsCard.vue';
 import store from '../store'
+import Cart from '../pages/Cart.vue'
 
 export default {
   components: {
     RestaurantsCard,
+    Cart,
 
   },
   data() {
@@ -200,23 +180,21 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.restaurant-contacts{
+.restaurant-contacts {
   font-family: 'Baloo Bhaijaan 2 Variable', sans-serif;
 
 }
-.grid-menu{
-  h4{
-    font-family: 'Fredoka One','sans-serif';
+
+.grid-menu {
+  h4 {
+    font-family: 'Fredoka One', 'sans-serif';
   }
-  p{
+
+  p {
     font-family: 'Baloo Bhaijaan 2 Variable', sans-serif;
   }
 }
-.container-menu {
 
-  max-width: 900px;
-  margin: 0 auto;
-}
 
 .grid-restaurant {
   display: flex;
@@ -283,8 +261,9 @@ ul {
   border-radius: 8px;
   background-color: #f7f7f7;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-  h3{
-    font-family: 'Fredoka One','sans-serif';
+
+  h3 {
+    font-family: 'Fredoka One', 'sans-serif';
   }
 
 
