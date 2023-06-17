@@ -12,7 +12,7 @@ export default {
     // Restaurants
   }
 }
-
+//SONO UN COMMENTO
 </script>
 
 <template>
